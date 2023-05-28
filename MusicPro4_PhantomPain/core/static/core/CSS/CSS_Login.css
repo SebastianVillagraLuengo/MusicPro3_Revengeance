@@ -159,3 +159,35 @@ footer {
   border-radius: 20px;
 
 }
+
+/*navbar*/
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #fff;
+  color: black;
+}
+
+.topnav .icon {
+  display: none;
+}
+/*navbar*/
+/*el responsive de la navbar*/
