@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #e69138 !important;
+  background-color: black !important;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("https://www.musicalcienfuegos.com/img/home_1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed; 
@@ -20,16 +20,25 @@ body {
 }
 
 :root {
-  --cfondo: rgb(207, 211, 212);
-  --cfondoForm1: rgb(204, 103, 8);;
-  --cfondoForm2: rgb(202, 189, 129);
-  --cnegro: black;
-  --ctexto: rgb(14, 81, 88);
-  --ctextoDark: rgb(1, 35, 39);
-  --cblanco: white;
+  --cfondo: white;
+  --cfondoForm1: black;
+  --cfondoForm2: black;
+  --cnegro: white;
+  --ctexto: grey;
+  --ctextoDark: grey;
+  --cblanco: grey;
   --error: rgb(184, 31, 31);
 }
-
+a{
+  color: #fff; 
+  
+}
+a:hover {
+  color: #fff;
+}
+q{
+  color: #fff; 
+}
 [type="checkbox"] {
   display: none;
 }
@@ -61,6 +70,7 @@ body {
 }
 
 .form-titulo {
+  color: #fff;
   font-weight: bold;
   font-size: 30px;
   text-align: center;
@@ -70,10 +80,12 @@ body {
 }
 
 .form-input {
+  color: #fff;
   margin-bottom: 30px;
 }
 
 .form-input label {
+  color: #fff;
   display: block;
   margin-top: 10px;
   font-size: 15px;
@@ -81,6 +93,7 @@ body {
 }
 
 .form-input input {
+  color: #fff;
   width: 100%;
   border: none;
   outline: none;
@@ -89,6 +102,7 @@ body {
 }
 
 .form-input input:focus + label {
+  color: #fff;
   font-weight: bold;
   color: var(--cnegro);
 }
@@ -110,6 +124,7 @@ body {
 }
 
 .form-boton input {
+  color: #fff;
   background: var(--cnegro);
   color: var(--cblanco);
   padding: 10px 50px;
@@ -121,6 +136,7 @@ body {
 }
 
 .form-boton input:hover {
+  color: #fff;
   background: var(--ctextoDark);
   transition: 0.5s;
 }
