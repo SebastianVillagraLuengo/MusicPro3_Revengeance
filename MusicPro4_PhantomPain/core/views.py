@@ -12,3 +12,6 @@ def html_registro(request):
 
 def html_login(request):
     return render(request, 'core/formularioLogin.html')
+
+def tienda(request):
+    return render(request, 'core/tienda.html')

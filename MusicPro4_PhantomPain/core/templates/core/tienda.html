@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+         <!-- Bootstrap -->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <!-- CSS Propio -->
+        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/tienda.css' %}">
+        <!-- ICONOS INCREÍBLES -->
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+        <link rel="icon" type="image/x-icon" href="{% static 'core/IMG/icono.ico' %}">
+
+</head>
+<body>
+    
+      <!-- NAVBAR -->
+  <div class="topnav" id="myTopnav">
+    <a href="http://127.0.0.1:5501/index.html" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
+    <a href="http://127.0.0.1:5501/F_login(formulario).html"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
+    <a href="http://127.0.0.1:5501/F_registro(formulario)%20traduce%20de%20aqui%20a%20abajo.html"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
+    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+    <a href="http://127.0.0.1:5501/me.html"><i class="fa-solid fa-user"></i></i> Sobre nosotros.</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+
+    <!-- NAVBAR -->
+  <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica", sans-serif;
+      }
+      img {
+        max-width: 100%;
+      }
+      .slider-container {
+        height: 50%;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .menu {
+        position: absolute;
+        left: 0;
+        z-index: 900;
+        width: 100%;
+        bottom: 0;
+      }
+      .menu label {
+        cursor: pointer;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        border-radius: 50px;
+        margin: 0 0.2em 1em;
+      }
+      .menu label:hover,
+      .menu label:focus {
+        background: #1c87c9;
+      }
+      .slide {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        padding: 8em 1em 0;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: left 0s 0.75s;
+      }
+      [id^="slide"]:checked + .slide {
+        left: 0;
+        z-index: 100;
+        transition: left 0.65s ease-out;
+      }
+      .slide-1 {
+        background-image: url("{% static 'core/IMG/banner1.jpg' %}");
+      }
+      .slide-2 {
+        background-image: url("{% static 'core/IMG/banner1.jpg' %}");
+      }
+      .slide-3 {
+        background-image: url("{% static 'core/IMG/banner1.jpg' %}");
+      }
+
+    .banner {
+      display: flex;
+      width: 100%;
+    }
+
+    .column {
+      flex: 1;
+      height: 100px;
+      background-color: #e0e0e0;
+      box-sizing: border-box;
+    }
+    .big-text {
+      font-size: 20px; /* Adjust the font size as needed */
+      color: black; /* Adjust the color as needed */
+      font-weight: bold; /* Add font weight for emphasis */
+      text-shadow: 2px 2px 4px #fff(0, 0, 0, 0.5); /* Add a text shadow for visual effect */
+      text-align: center; /* Center the text horizontally */
+    }
+    footer {
+    color: #fff;
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+    }
+    a{
+        color: #fff; 
+    }
+    a:hover, a:active {
+  color: white;
+}
+    </style>      
+
+
+
+
+
+        <section class="hero">
+            <div class="hero-inner">
+                <h1>Hola Peter</h1>
+                <h2>Bienvenido a fortnite</h2>
+                <a href="http://127.0.0.1:5500/INDEX.HTML" class="btn">¿Donde dropeamos?</a>
+            </div>
+        </section>
+         <!-- Primera fila-->
+          <section class="product"> 
+            <h2 class="product-category">Instrumentos</h2>
+            <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card1.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card2.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card3.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card4.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card5.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card6.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card7.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card9.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card10.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- Primera fila-->
+     <section class="product"> 
+       <h2 class="product-category">Equipos</h2>
+       <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+       <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+       <div class="product-container">
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card1.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card2.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card3.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card4.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card5.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card6.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card7.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card8.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card9.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+           <div class="product-card">
+               <div class="product-image">
+                   <span class="discount-tag">50% off</span>
+                   <img src="images/card10.jpg" class="product-thumb" alt="">
+                   <button class="card-btn">add to wishlist</button>
+               </div>
+               <div class="product-info">
+                   <h2 class="product-brand">brand</h2>
+                   <span class="price">$20</span><span class="actual-price">$40</span>
+               </div>
+           </div>
+       </div>
+   </section>
+</section>
+<!-- Primera fila-->
+ <section class="product"> 
+   <h2 class="product-category">Accesorios</h2>
+   <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+   <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+   <div class="product-container">
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card1.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card2.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card3.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card4.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card5.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card6.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card7.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card8.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card9.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+       <div class="product-card">
+           <div class="product-image">
+               <span class="discount-tag">50% off</span>
+               <img src="images/card10.jpg" class="product-thumb" alt="">
+               <button class="card-btn">add to wishlist</button>
+           </div>
+           <div class="product-info">
+               <h2 class="product-brand">brand</h2>
+               <span class="price">$20</span><span class="actual-price">$40</span>
+           </div>
+       </div>
+   </div>
+</section>
+
+    <div class="row">
+        <div class="column">
+            <img src="img/Modelo01.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/Producto01.html">Warhammer 40: Imperial Knight</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/Modelo02.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/Producto02.html">Starcraft: Space Marine</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/Modelo03.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/Producto03.html">League Of Legends: Mordekaiser</a></h4>
+        </div>
+      </div>
+      <div><!-- Segunda fila--></div>
+      <div class="row">
+        <div class="column">
+            <img src="img/modelo04.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto04.html">Star Wars: Tie Fighter</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/modelo06.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto05.html">Star Wars: X-Wing</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/modelo05.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto06.html">Starcraft: Viking</a></h4>
+        </div>
+      </div>
+      <div><!-- tercera fila--></div>
+      <div class="row">
+        <div class="column">
+            <img src="img/modelo07.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto07.html">Starcraft: Firebat</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/modelo08.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto08.html">Warhammer 40: Ork Boss</a></h4>
+        </div>
+        <div class="column">
+            <img src="img/modelo09.png" class="img-fluid my-image">
+          <h4><a href="http://127.0.0.1:5501/producto09.html">Pokémon: Torterra pot</a></h4>
+        </div>
+      </div>
+    <div><!-- ultima fila--></div>
+    <div class="row">
+      <div class="column">
+          <img src="img/modelo10.png" class="img-fluid my-image">
+        <h4><a href="http://127.0.0.1:5501/producto10.html">Warhammer 40k:Baneblade</a></h4>
+      </div>
+      <div class="column">
+          <img src="img/modelo11.png" class="img-fluid my-image">
+        <h4><a href="http://127.0.0.1:5501/producto11.html">Warhammer 40k: Ork Dred</a></h4>
+      </div>
+      <div class="column">
+          <img src="img/modelo12.png" class="img-fluid my-image">
+        <h4><a href="http://127.0.0.1:5501/producto12.html">Warhammer 40k: Ork Boyz</a></h4>
+      </div>
+    </div>
+  </div>    
+  
+  
+<!--Java script -->
+<script src="{% static 'core/JS/script.js' %}"></script>
+
+ <!--Bootstrap -->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+     crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+     crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+     crossorigin="anonymous"></script>
+</body>
+<footer>
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+    <p>&copy; celular qlia wajajaj.</p>
+    <div class = "social-links">
+        <p>Share At: </p>
+        <a href = "#">
+          <i class = "fab fa-facebook-f"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-twitter"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-instagram"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-whatsapp"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-pinterest"></i>
+        </a>
+  </footer>
+</html>
+
+
+
+
