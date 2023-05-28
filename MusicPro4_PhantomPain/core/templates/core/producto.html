@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+         <!-- Bootstrap -->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <!-- CSS Propio -->
+        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles1.css' %}">
+        <!-- ICONOS INCREÍBLES -->
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+        <link rel="icon" type="image/x-icon" href="{% static 'core/IMG/icono.ico' %}">
+
+</head>
+<body>
+    
+      <!-- NAVBAR -->
+  <div class="topnav" id="myTopnav">
+    <a href="http://127.0.0.1:5501/index.html" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
+    <a href="http://127.0.0.1:5501/F_login(formulario).html"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
+    <a href="http://127.0.0.1:5501/F_registro(formulario)%20traduce%20de%20aqui%20a%20abajo.html"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
+    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+    <a href="http://127.0.0.1:5501/me.html"><i class="fa-solid fa-user"></i></i> Sobre nosotros.</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+
+    <!-- NAVBAR -->
+  
+     <!-- NAVBAR -->
+  </div>
+  <div class = "card-wrapper">
+      <div class = "card">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "img/imp1.jpg" alt = "A">
+              <img src = "img/imp2.png" alt = "b">
+              <img src = "img/imp3.png" alt = "c">
+              <img src = "img/imp4.png" alt = "d">
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src = "img/imp1.jpg" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+                <img src = "img/imp2.png" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                <img src = "img/imp3.png" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "4">
+                <img src = "img/imp4.png" alt = "shoe image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title">Imperial Knight</h2>
+          <a href = "https://cults3d.com/en/users/Mogli_Maker/creations" class = "product-link">visit my cults3d page</a>
+          <div class = "product-rating">
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <span>5(5k+)</span>
+          </div>
+
+          <div class = "product-price">
+            <p class = "last-price">Old Price: <span>€3.00</span></p>
+            <p class = "new-price">New Price: <span>Free</span></p>
+          </div>
+
+          <div class = "product-detail">
+            <h2>About this item: </h2>
+            <p>Imperial Knight crusader.
+              Imperial Knights are powerful in the extreme sense of the word, unmatched combat focused walkers equiped with heavy armour, and an endless array of weaponry.
+              I will update this model with more variants and weapons over time.
+              Any and all feedback ara greatly appreciated and will be integrated with the upmost speed.
+              As I am still learning feedback is very important and greatly valued.</p>
+            <p>This is a very large unit, I reccomend printing it separately and assembling it once printed, to that end I've separated it into several pieces the the twin-linked cannon on top, the head, the upper body, the two arms and the legs.
+              <br>
+              Of course you can always print it all in one go or just reduce the size to make it print faster, I've incluided the files necessaries all options.</p>
+            <ul>
+              <li>Detail level: <span>High</span></li>
+              <li>Available: <span>Ready For Download.</span></li>
+              <li>Category: <span>Warhammer 40k.</span></li>
+              <li>File size <span>30 megabytes.</span></li>
+              <li>Printing: <span>Supports:Tree supports</span></li>
+            </ul>
+          </div>
+
+          <div class = "purchase-info">
+            <button type = "button" class = "btn">
+              Add to Cart <i class = "fas fa-shopping-cart"></i>
+            </button>
+            <button type = "button" class = "btn">Compare</button>
+          </div>
+
+          <div class = "social-links">
+            <p>Share At: </p>
+            <a href = "#">
+              <i class = "fab fa-facebook-f"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-twitter"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-instagram"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-whatsapp"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+            footer {
+    color: #fff;
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+    }
+    a{
+        color: #fff; 
+    }
+    a:hover, a:active {
+      body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("https://files.cults3d.com/uploaders/21855909/illustration-file/c8c5a303-e51d-464c-9577-c93ec94bba2a/4.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100% 100%;
+      }
+      </style>
+
+
+
+
+<!--Java script -->
+<script src="{% static 'core/JS/script.js' %}"></script>
+
+ <!--Bootstrap -->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+     crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+     crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+     crossorigin="anonymous"></script>
+</body>
+<footer>
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+    <p>&copy; celular qlia wajajaj.</p>
+    <div class = "social-links">
+        <p>Share At: </p>
+        <a href = "#">
+          <i class = "fab fa-facebook-f"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-twitter"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-instagram"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-whatsapp"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-pinterest"></i>
+        </a>
+  </footer>
+</html>
+
+
+
+
