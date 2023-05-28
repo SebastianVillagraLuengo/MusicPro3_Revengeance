@@ -5,9 +5,10 @@
 
 body {
   background-color: #e69138 !important;
-  background-image: url("https://fondosmil.com/fondo/73620.jpg");
-  background-repeat:no-repeat;
-  background-position: center center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("https://www.musicalcienfuegos.com/img/home_1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
 }
 
 
