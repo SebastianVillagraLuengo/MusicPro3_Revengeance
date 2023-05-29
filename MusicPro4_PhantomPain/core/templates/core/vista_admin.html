@@ -23,7 +23,7 @@
       <!-- NAVBAR -->
   <div class="topnav" id="myTopnav">
     <a href="{% url 'vista_admin' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
-    <a href="http://127.0.0.1:5501/F_registro(formulario)%20traduce%20de%20aqui%20a%20abajo.html"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos.</a>
+    <a href="{% url 'tienda' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos.</a>
     <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
     <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
 
@@ -158,123 +158,133 @@
 
 <br>
 
-        <section class="product"> 
-            <h2 class="product-category">Más vendidos</h2>
-            <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
-            <div class="product-container">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo01.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico </h4>
-                        <span class="price">$150.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo02.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <span class="price">$200.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo03.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Bajo Electrico</h2>
-                        <span class="price"></span><span class="actual-price">$120.000</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card4.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card5.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card6.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card7.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card8.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card9.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card10.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
+<section class="product"> 
+    <h2 class="product-category">Más vendidos</h2>
+    <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+    <div class="product-container">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/p1.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
             </div>
-        </section>
+            <div class="product-info">
+                <h4 class="product-brand">Esi </h4>
+                <h8 class="product-brand">Monitor de Estudio Esi </h8><br>
+                <span class="price">$150.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/p10.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Pedal</h4>
+                <h8 class="product-brand">Blackstar dual</h8><br>
+                <span class="price">$200.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">MaxStone</h8><br>
+                <span class="price">$1.020.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Greg Bennet</h8><br>
+                <span class="price">$2.050.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/p7.webp' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Microfono</h4>
+                <h8 class="product-brand">Nevo</h8><br>
+                <span class="price">$400.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Bajo Electrico</h8><br>
+                <span class="price">$1.200.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Bajo Electrico</h8><br>
+                <span class="price">$700.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Bajo Electrico</h8><br>
+                <span class="price">$900.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Bajo Electrico</h8><br>
+                <span class="price">$250.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag"></span>
+                <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
+                <button class="card-btn">Comprar</button>
+            </div>
+            <div class="product-info">
+                <h4 class="product-brand">Bajo Electrico</h4>
+                <h8 class="product-brand">Bajo Electrico</h8><br>
+                <span class="price">$800.000</span><span class="actual-price"></span>
+            </div>
+        </div>
+    </div>
+</section>
         <section class="hero">
             <div class="hero-inner">
                 <h1>¿Quienes somos?</h1>
@@ -287,118 +297,128 @@
         <div><br>
 
             <section class="product"> 
-                <h2 class="product-category">Ofertas HOT</h2>
+                <h2 class="product-category">Nuestros Mejores Bajos</h2>
                 <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
                 <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
                 <div class="product-container">
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo01.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico </h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$150.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card2.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo02.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$200.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card3.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$120.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card4.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$250.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card5.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$400.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card6.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$1.200.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card7.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$700.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card8.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$900.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card9.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$250.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card10.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
+                            <span class="discount-tag"></span>
+                            <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
+                            <button class="card-btn">Comprar</button>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
+                            <h4 class="product-brand">Bajo Electrico</h4>
+                            <h8 class="product-brand">Bajo Electrico</h8><br>
+                            <span class="price">$800.000</span><span class="actual-price"></span>
                         </div>
                     </div>
                 </div>
