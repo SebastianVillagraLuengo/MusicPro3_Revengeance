@@ -22,9 +22,9 @@
     
       <!-- NAVBAR -->
   <div class="topnav" id="myTopnav">
-    <a href="http://127.0.0.1:5501/index.html" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
-    <a href="http://127.0.0.1:5501/F_login(formulario).html"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
-    <a href="http://127.0.0.1:5501/F_registro(formulario)%20traduce%20de%20aqui%20a%20abajo.html"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
+    <a href="{% url 'index' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
+    <a href="{% url 'Login' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
+    <a href="{% url 'Registro' %}"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
     <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
     <a href="http://127.0.0.1:5501/me.html"><i class="fa-solid fa-user"></i></i> Sobre nosotros.</a>
 
