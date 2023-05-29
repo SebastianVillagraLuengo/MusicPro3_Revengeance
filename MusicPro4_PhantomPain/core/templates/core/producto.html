@@ -19,22 +19,23 @@
         <link rel="icon" type="image/x-icon" href="{% static 'core/IMG/icono.ico' %}">
 
 </head>
+
 <body>
     
       <!-- NAVBAR -->
   <div class="topnav" id="myTopnav">
-    <a href="http://127.0.0.1:5501/index.html" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
-    <a href="http://127.0.0.1:5501/F_login(formulario).html"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
-    <a href="http://127.0.0.1:5501/F_registro(formulario)%20traduce%20de%20aqui%20a%20abajo.html"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
-    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
-    <a href="http://127.0.0.1:5501/me.html"><i class="fa-solid fa-user"></i></i> Sobre nosotros.</a>
+    <a href="{% url 'vista_usuario' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
+    <div class="topnav-right">
+      <a href="{% url 'tienda' %}" style="color: #ffffff;"></i> Ir a todos los productos.</a>
+      <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+      <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
+  
+    </div>
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
-
-
     <!-- NAVBAR -->
   
      <!-- NAVBAR -->
@@ -105,7 +106,7 @@
             <button type = "button" class = "btn">
               Añadir al carrito <i class = "fas fa-shopping-cart"></i>
             </button>
-            <button type = "button" class = "btn">Volver a la tienda</button>
+            <button type = "button" class = "btn"><a href="{% url 'tienda' %}" >Volver a la tienda</a></button>
           </div>
           <div class = "social-links">
             <p>Redes sociales: </p>

@@ -209,5 +209,8 @@ footer {
 /*navbar*/
 /*el responsive de la navbar*/
 
+.topnav-right {
+  float: right;
+}
 
 

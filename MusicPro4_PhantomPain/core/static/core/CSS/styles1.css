@@ -9,7 +9,9 @@ body {
     overflow: hidden;
     background-color: black;
   }
-  
+  a:hover {
+    color: hotpink;
+  }
   .topnav a {
     float: left;
     display: block;

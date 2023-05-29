@@ -20,11 +20,14 @@
 <!-- NAVBAR -->
 <div class="topnav" id="myTopnav">
   <a href="{% url 'index' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
-  <a href="{% url 'Login' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
-  <a href="{% url 'Registro' %}"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
-  <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+  <div class="topnav-right">
+    <a href="{% url 'Login' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
+    <a href="{% url 'Registro' %}"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
+    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+  </div>
+
   </a>
 </div>   
 <!-- NAVBAR -->
@@ -43,7 +46,7 @@
             {%endif%}
             <form action="" class="form" id="form" method="POST">
               {% csrf_token %}
-              <p class="form-titulo">Inicio de Sesion </p>
+              <p class="form-titulo">Inicio de sesión </p>
               <div class="form-input nombre">
                 <input type="text" id="nombre" name="nombre">
                 <label for="nombre">Nombre</label>
@@ -58,7 +61,7 @@
                 <a href="{% url 'Registro' %}">¡Registrate Aqui!</a>
               </div>
               <div class="form-boton" >
-                 <input type="submit" value="Enviar">
+                 <input type="submit" href="{% url 'vista_usuario' %}" value="Enviar">
               </div>
               <p class="mensajeCorrecto"></p>
             </form>

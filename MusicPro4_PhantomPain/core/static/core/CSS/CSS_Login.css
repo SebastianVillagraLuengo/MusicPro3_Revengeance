@@ -10,7 +10,16 @@ body {
   background-attachment: fixed; 
   background-size: 100% 100%;
 }
-
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background-color: #555555;/* Black */
+}
 
 .container {
   /* border: 3px solid red; */
@@ -209,3 +218,7 @@ footer {
 }
 /*navbar*/
 /*el responsive de la navbar*/
+.topnav-right {
+  float: right;
+}
+

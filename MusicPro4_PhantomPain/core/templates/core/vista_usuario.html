@@ -23,9 +23,12 @@
       <!-- NAVBAR -->
   <div class="topnav" id="myTopnav">
     <a href="{% url 'vista_usuario' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
-    <a href="{% url 'tienda' %}" style="color: #ffffff;"></i> Ir a todos los productos.</a>
-    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
-    <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
+    <div class="topnav-right">
+        <a href="{% url 'tienda' %}" style="color: #ffffff;"></i> Ir a todos los productos.</a>
+        <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+        <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
+    </div>
+
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
@@ -93,11 +96,10 @@
         background-image: url("{% static 'core/IMG/banner1.jpg' %}");
       }
       .slide-2 {
-        background-image: url("{% static 'core/IMG/banner1.jpg' %}");
+        background-image: url("{% static 'core/IMG/banner2.jpg' %}");
       }
       .slide-3 {
-        background-image: url("{% static 'core/IMG/banner1.jpg' %}");
-      }
+        background-image: url("{% static 'core/IMG/banner1.webp' %}");      }
 
     .banner {
       display: flex;
