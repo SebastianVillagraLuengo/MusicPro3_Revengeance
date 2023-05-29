@@ -27,3 +27,6 @@ def tienda_admin(request):
 
 def agregar_productos(request):
     return render(request, 'core/formularioAgregarProductos.html')
+
+def carrito(request):
+    return render(request, 'core/carrito.html')
