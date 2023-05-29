@@ -24,3 +24,6 @@ def vista_admin(request):
 
 def tienda_admin(request):
     return render(request, 'core/tienda_admin.html')
+
+def agregar_productos(request):
+    return render(request, 'core/formularioAgregarProductos.html')
