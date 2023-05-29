@@ -15,3 +15,6 @@ def html_login(request):
 
 def tienda(request):
     return render(request, 'core/tienda.html')
+
+def vista_usuario(request):
+    return render(request, 'core/vista_usuario.html')
