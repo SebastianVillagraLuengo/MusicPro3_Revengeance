@@ -21,8 +21,8 @@ body {
 
 :root {
   --cfondo: white;
-  --cfondoForm1: black;
-  --cfondoForm2: black;
+  --cfondoForm1: #454546;
+  --cfondoForm2: #454546;
   --cnegro: white;
   --ctexto: grey;
   --ctextoDark: grey;
