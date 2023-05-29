@@ -18,3 +18,6 @@ def tienda(request):
 
 def vista_usuario(request):
     return render(request, 'core/vista_usuario.html')
+
+def vista_admin(request):
+    return render(request, 'core/vista_admin.html')
