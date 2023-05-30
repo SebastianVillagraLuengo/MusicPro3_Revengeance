@@ -23,7 +23,7 @@
   <div class="topnav" id="myTopnav">
     <a href="{% url 'vista_admin' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
     <div class="topnav-right">
-    <a href="{% url 'tienda' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos.</a>
+    <a href="{% url 'tienda_admin' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos.</a>
     <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
     <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-upload"></i> Agregar productos</a>
     <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
@@ -39,13 +39,13 @@
                 <div class="container">
                   {%if messages%}
                   {%for message in messages%}
-                  <div class="alert alert-dismissible alert-danger">
+                  <div class="alert alert-dismissible alert-success">
                      <button type="button"class="close"data-dismiss="alert">&times;</button>
                      <strong class="text-dark">{{message}}</strong>
                   </div>
                   {% endfor %}
                   {%endif%}
-                    <form action="" class="form" id="form" autocomplete="off" method="POST" enctype="multipart/form-data">
+                    <form action="{% url 'formProducto' %}" class="form" id="form" autocomplete="off" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <p class="form-titulo">Agrega un producto</p>
                       <div class="form-input nomProd">
@@ -70,9 +70,9 @@
                         <p class="mensajeError" id="mensajeError"></p>
                       </div>
                       <div class="form-group">
-                        <label for="tipo_producto">Tipo de producto: </label>
-                        <select type="file" name="tipo_producto" id="tipo_producto">
-                          <option value="1">Seleccionar</option>
+                        <label for="">Tipo de producto: </label>
+                        <select name="tipo_producto" id="tipo_producto">
+                          <option value="">Seleccionar</option>
                           {% for m in tipo_producto %}
                           <option value="{{ m.id }}">{{m.nombreTipo}}</option>
                           {% endfor %}

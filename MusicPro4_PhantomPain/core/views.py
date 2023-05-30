@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Producto,TipoProducto
 from django.contrib import messages
 
@@ -31,7 +31,18 @@ def tienda_admin(request):
     return render(request, 'core/tienda_admin.html')
 
 def agregar_productos(request):
+    tipo_producto = TipoProducto.objects.all()
+    variables ={
+        'tipo_producto':tipo_producto
+    }
 
+    return render(request, 'core/formularioAgregarProductos.html', variables)
+
+def carrito(request):
+    return render(request, 'core/carrito.html')
+
+
+def formProducto(request):
     tipo_producto = TipoProducto.objects.all()
     variables ={
         'tipo_producto':tipo_producto
@@ -45,6 +56,7 @@ def agregar_productos(request):
         pro.stockProducto = request.POST.get('cantidad')
         ti_producto = TipoProducto()
         ti_producto.id = request.POST.get('tipo_producto')
+        pro.tipoNombre = ti_producto
         pro.imagenUno = request.POST.get('foto_1')
         pro.imagenDos = request.POST.get('foto_2')
         pro.imagenTres = request.POST.get('foto_3')
@@ -57,8 +69,4 @@ def agregar_productos(request):
         except:
             messages.error(request, 'No se pudo agregar el producto')
 
-
-    return render(request, 'core/formularioAgregarProductos.html',variables)
-
-def carrito(request):
-    return render(request, 'core/carrito.html')
+    return redirect(request, 'core/formularioAgregarProductos.html')

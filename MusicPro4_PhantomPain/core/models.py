@@ -26,6 +26,7 @@ class Usuario(models.Model):
 
 class TipoProducto(models.Model):
     nombreTipo= models.CharField(max_length=25,verbose_name='Nombre del tipo de producto')
+    
     def __str__(self) -> str:
         return self.nombreTipo
 
