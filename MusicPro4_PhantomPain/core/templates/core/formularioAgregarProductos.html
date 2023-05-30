@@ -70,20 +70,28 @@
                         <p class="mensajeError" id="mensajeError"></p>
                       </div>
                       <div class="form-group">
-                        <label for="foto_m">Foto Producto: (Obligatoria) </label>
-                        <input type="file" name="foto_m" id="foto_m" required>
+                        <label for="tipo_producto">Tipo de producto: </label>
+                        <select type="file" name="tipo_producto" id="tipo_producto">
+                          <option value="1">Seleccionar</option>
+                          {% for m in tipo_producto %}
+                          <option value="{{ m.id }}">{{m.nombreTipo}}</option>
+                          {% endfor %}
                       </div>
                       <div class="form-group">
-                        <label for="foto_m">Foto Producto 2:  (opcional)</label>
-                        <input type="file" name="foto_m" id="foto_m" >
+                        <label for="foto_1">Foto Producto: (Obligatoria) </label>
+                        <input type="file" name="foto_1" id="foto_1" required>
                       </div>
                       <div class="form-group">
-                        <label for="foto_m">Foto Producto 3: (opcional)</label>
-                        <input type="file" name="foto_m" id="foto_m" >
+                        <label for="foto_2">Foto Producto 2:  (opcional)</label>
+                        <input type="file" name="foto_2" id="foto_2" >
                       </div>
                       <div class="form-group">
-                        <label for="foto_m">Foto Producto 4: (opcional)</label>
-                        <input type="file" name="foto_m" id="foto_m" >
+                        <label for="foto_3">Foto Producto 3: (opcional)</label>
+                        <input type="file" name="foto_3" id="foto_3" >
+                      </div>
+                      <div class="form-group">
+                        <label for="foto_4">Foto Producto 4: (opcional)</label>
+                        <input type="file" name="foto_4" id="foto_4" >
                       </div>
                       <div class="form-boton" >
                         <input type="submit" value="Enviar">

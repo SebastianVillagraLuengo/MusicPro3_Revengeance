@@ -24,6 +24,11 @@ class Usuario(models.Model):
     def __str__(self) -> str:
         return self.nombreUsuario
 
+class TipoProducto(models.Model):
+    nombreTipo= models.CharField(max_length=25,verbose_name='Nombre del tipo de producto')
+    def __str__(self) -> str:
+        return self.nombreTipo
+
 #Tabla de modelos3d
 class Producto(models.Model):
     #Llave primaria
@@ -35,6 +40,7 @@ class Producto(models.Model):
     imagenDos= models.ImageField(upload_to="CarpetaDestino",verbose_name='Segunda imagen', null=True)
     imagenTres= models.ImageField(upload_to="CarpetaDestino",verbose_name='Tercera imagen',null=True)
     imagenCuatro= models.ImageField(upload_to="CarpetaDestino",verbose_name='Cuarta imagen',null=True)
+    tipoNombre=models.ForeignKey(TipoProducto,on_delete=models.PROTECT,verbose_name='La llave del tipo de producto',null=True)
     
     def __str__(self) -> str:
         return self.nombreProducto
