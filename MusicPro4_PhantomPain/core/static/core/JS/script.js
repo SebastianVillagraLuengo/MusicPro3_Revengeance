@@ -6,13 +6,26 @@ function myFunction() {
       x.className = "topnav";
     }
   }
+  (function () {
+    const btnEliminacion = document.querySelectorAll(".btnEliminacion");
+
+    btnEliminacion.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const confirmacion = confirm('¿Seguro que deseas eliminar este producto?');
+            if (!confirmacion) {
+                e.preventDefault();
+            }
+        });
+    });
+})();
 
 
 
   const productContainers = [...document.querySelectorAll('.product-container')];
   const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
   const preBtn = [...document.querySelectorAll('.pre-btn')];
-  
+
+
   productContainers.forEach((item, i) => {
       let containerDimensions = item.getBoundingClientRect();
       let containerWidth = containerDimensions.width;

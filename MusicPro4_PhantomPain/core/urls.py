@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import home,producto,html_registro,html_login,tienda,vista_usuario,vista_admin,tienda_admin,agregar_productos,carrito, formProducto
+from .views import home,producto,html_registro,html_login,tienda,vista_usuario,vista_admin,tienda_admin,agregar_productos,carrito, formProducto, eliminacion_prod
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
     path('agregar_productos', agregar_productos, name='agregar_productos'),
     path('carrito', carrito, name='carrito'),
     path('formProducto', formProducto, name='formProducto'),
+    path('eliminacion_prod/<nombreProducto>', eliminacion_prod, name='eliminacion_prod'),
 ]

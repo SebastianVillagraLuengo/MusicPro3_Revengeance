@@ -25,7 +25,12 @@ def vista_usuario(request):
     return render(request, 'core/vista_usuario.html')
 
 def vista_admin(request):
-    return render(request, 'core/vista_admin.html')
+    productos = Producto.objects.all()
+    data = {
+        'productos': productos
+    }
+    return render(request, 'core/vista_admin.html', data)
+
 
 def tienda_admin(request):
     return render(request, 'core/tienda_admin.html')
@@ -57,10 +62,10 @@ def formProducto(request):
         ti_producto = TipoProducto()
         ti_producto.id = request.POST.get('tipo_producto')
         pro.tipoNombre = ti_producto
-        pro.imagenUno = request.POST.get('foto_1')
-        pro.imagenDos = request.POST.get('foto_2')
-        pro.imagenTres = request.POST.get('foto_3')
-        pro.imagenCuatro = request.POST.get('foto_4')
+        pro.imagenUno = request.FILES.get('foto_1')
+        pro.imagenDos = request.FILES.get('foto_2')
+        pro.imagenTres = request.FILES.get('foto_3')
+        pro.imagenCuatro = request.FILES.get('foto_4')
 
         try:
             pro.save()
@@ -70,3 +75,11 @@ def formProducto(request):
             messages.error(request, 'No se pudo agregar el producto')
 
     return redirect(request, 'core/formularioAgregarProductos.html')
+
+
+def eliminacion_prod(request, nombreProducto):
+    producto = Producto.objects.get(nombreProducto = nombreProducto)
+    producto.delete()
+    messages.success(request, 'Producto eliminado con éxito')
+
+    return redirect('/')
