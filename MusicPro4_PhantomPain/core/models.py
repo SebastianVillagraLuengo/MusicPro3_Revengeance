@@ -32,9 +32,9 @@ class Producto(models.Model):
     precioProducto = models.IntegerField(verbose_name='El precio asociado al producto')
     stockProducto = models.IntegerField(verbose_name='El stock asociado al producto')
     imagenUno= models.ImageField(upload_to="CarpetaDestino",verbose_name='Primera imagen')
-    imagenDos= models.ImageField(upload_to="CarpetaDestino",verbose_name='Segunda imagen')
-    imagenTres= models.ImageField(upload_to="CarpetaDestino",verbose_name='Tercera imagen')
-    imagenCuatro= models.ImageField(upload_to="CarpetaDestino",verbose_name='Cuarta imagen')
+    imagenDos= models.ImageField(upload_to="CarpetaDestino",verbose_name='Segunda imagen', null=True)
+    imagenTres= models.ImageField(upload_to="CarpetaDestino",verbose_name='Tercera imagen',null=True)
+    imagenCuatro= models.ImageField(upload_to="CarpetaDestino",verbose_name='Cuarta imagen',null=True)
     
     def __str__(self) -> str:
         return self.nombreProducto
