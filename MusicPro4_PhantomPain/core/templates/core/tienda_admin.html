@@ -171,156 +171,21 @@
             <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
             <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
             <div class="product-container">
+                {% for p in instrumentos %}
                 <div class="product-card">
+                    {% if p.imagenUno %}
                     <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo01.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
+                        <span class="discount-tag"></span>    
+                        <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+                        {% endif %}
+                        <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
                     </div>
                     <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico </h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$150.000</span><span class="actual-price"></span>
+                        <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+                        <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo02.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$200.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$120.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$250.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$400.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$1.200.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$700.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$900.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$250.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Eliminar</button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$800.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
 <!-- Primera fila-->
@@ -329,152 +194,36 @@
    <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
    <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
    <div class="product-container">
-       <div class="product-card">
-           <div class="product-image">
-               <span class="discount-tag"></span>
-               <img src="{% static 'core/IMG/Esi_interfaz.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-            <h8 class="product-brand">Interfaz Esi U22XT 2 Canales</h8><br>
-            <span class="price">$79.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/shure_interfaz.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Interfaz Shure MVI 1 Canal</h8><br>
-               <span class="price">$129.000</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/soundcraft.png' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Interfaz Shure MVI 1 Canal</h8><br>
-               <span class="price">$169.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/interfaz_ik.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-            <h8 class="product-brand">Interfaz IK Multimedia IRIG AXE I/O Solo 1-2 Canales</h8><br>
-               <span class="price">$229.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/interfaz_audio.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-            <h8 class="product-brand">Interfaz M-Audio Air192/4</h8><br>
-               <span class="price">$169.000</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/parlantes_monitor.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-            <h8 class="product-brand">Monitor IK Multimedia IRIG i Loud MTM Alámbrico 100W</h8><br>
-               <span class="price">$449.990</span><span class="actual-price">$40</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/interfaz_maya.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Interfaz Esi Maya 22 2 Canales</h8><br>
-               <span class="price">$89.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/Interfaz_IRIG.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Interfaz IK Multimedia IRIG Pre HD Analógica</h8><br>
-               <span class="price">$129.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/monitor_ESI_8.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Monitor de Estudio ESI Unik 8</h8><br>
-               <span class="price">$299.990</span>
-           </div>
-       </div>
-       <div class="product-card">
-           <div class="product-image">
-               <img src="{% static 'core/IMG/Monitor_esi_estudio.webp' %}" class="product-thumb" alt="">
-               <button class="card-btn">Eliminar</button>
-           </div>
-           <div>
-            <button type="button" class="btn btn-info" style="width: 100%;">Editar</button>
-        </div>
-           <div class="product-info">
-               <h8 class="product-brand">Monitor de Estudio Esi Activ Alámbrico</h8><br>
-               <span class="price">$139.990</span>
-           </div>
-       </div>
-   </div>
-</section>
-<section class="product"> 
-  <h2 class="product-category">Accesorios</h2>
-  <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-  <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-  <div class="product-container">
-    {% for p in productos %}
+    {% for p in equipos %}
     <div class="product-card">
         {% if p.imagenUno %}
         <div class="product-image">
             <span class="discount-tag"></span>    
             <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
             {% endif %}
-            <button class="card-btn">Eliminar</button>
+            <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
+        </div>
+        <div class="product-info">
+            <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+            <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</section>
+<section class="product"> 
+  <h2 class="product-category">Accesorios</h2>
+  <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <div class="product-container">
+    {% for p in accesorios %}
+    <div class="product-card">
+        {% if p.imagenUno %}
+        <div class="product-image">
+            <span class="discount-tag"></span>    
+            <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+            {% endif %}
+            <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
         </div>
         <div class="product-info">
             <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>

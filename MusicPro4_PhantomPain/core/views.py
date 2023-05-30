@@ -4,9 +4,16 @@ from django.contrib import messages
 
 def home(request):
     productos = Producto.objects.all()
-    oferta = Producto.objects.filter(tipoNombre='3')
+    instrumentos = Producto.objects.filter(tipoNombre='1')
+    equipos = Producto.objects.filter(tipoNombre='2')
+    accesorios = Producto.objects.filter(tipoNombre='3')
+    oferta = Producto.objects.filter(tipoNombre='4')
+
     data = {
-        'oferta': oferta
+        'oferta': oferta,
+        'instrumentos': instrumentos,
+        'equipos': equipos,
+        'accesorios': accesorios
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
@@ -20,7 +27,19 @@ def html_login(request):
     return render(request, 'core/formularioLogin.html')
 
 def tienda(request):
-    return render(request, 'core/tienda.html')
+    productos = Producto.objects.all()
+    instrumentos = Producto.objects.filter(tipoNombre='1')
+    equipos = Producto.objects.filter(tipoNombre='2')
+    accesorios = Producto.objects.filter(tipoNombre='3')
+    oferta = Producto.objects.filter(tipoNombre='4')
+
+    data = {
+        'oferta': oferta,
+        'instrumentos': instrumentos,
+        'equipos': equipos,
+        'accesorios': accesorios
+    }
+    return render(request, 'core/tienda.html', data)
 
 def vista_usuario(request):
     return render(request, 'core/vista_usuario.html')
@@ -34,7 +53,19 @@ def vista_admin(request):
 
 
 def tienda_admin(request):
-    return render(request, 'core/tienda_admin.html')
+    productos = Producto.objects.all()
+    instrumentos = Producto.objects.filter(tipoNombre='1')
+    equipos = Producto.objects.filter(tipoNombre='2')
+    accesorios = Producto.objects.filter(tipoNombre='3')
+    oferta = Producto.objects.filter(tipoNombre='4')
+
+    data = {
+        'oferta': oferta,
+        'instrumentos': instrumentos,
+        'equipos': equipos,
+        'accesorios': accesorios
+    }
+    return render(request, 'core/tienda_admin.html', data)
 
 def agregar_productos(request):
     tipo_producto = TipoProducto.objects.all()
@@ -83,4 +114,4 @@ def eliminacion_prod(request, nombreProducto):
     producto.delete()
     messages.success(request, 'Producto eliminado con éxito')
 
-    return redirect('/')
+    return redirect('tienda_admin')
