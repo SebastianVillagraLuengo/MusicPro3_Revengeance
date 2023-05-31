@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto,TipoProducto
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 
 def home(request):
     productos = Producto.objects.all()
@@ -142,3 +144,16 @@ def modificar_productos(request, id):
         return redirect('tienda_admin')
     
     return render(request, 'core/modificarProductos.html', {'producto': producto, 'tipo_producto': tipo_producto})
+
+def funcion_login(request):
+    if request.method == 'POST':
+        username = request.POST['nombre']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('vista_usuario')  # Cambia 'vista_usuario' con el nombre de tu vista principal
+        else:
+            error_message = "Credenciales inválidas. Por favor, intenta nuevamente."
+            return render(request, 'formularioLogin.html', {'error_message': error_message})
+    return render(request, 'formularioLogin.html')
