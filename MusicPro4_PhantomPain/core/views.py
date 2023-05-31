@@ -126,4 +126,4 @@ def modificar_productos(request, id):
         'tipo_producto':tipo_producto
     }
 
-    return redirect(request, 'core/modificarProductos.html',variables)
+    return render(request, 'core/modificarProductos.html',variables)
