@@ -11,7 +11,8 @@
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          <!-- CSS Propio -->
-        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/carrito.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles.css' %}">
+
         <!-- ICONOS INCREÍBLES -->
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
@@ -19,64 +20,131 @@
 
 </head>
 <body>
-    <div class="CartContainer">
-        <div class="Header">
-            <h3 class="Heading">Shopping Cart</h3>
-            <h5 class="Action">Remove all</h5>
-        </div>
+          <!-- NAVBAR -->
+  <div class="topnav" id="myTopnav">
+    <a href="{% url 'vista_usuario' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
+    <div class="topnav-right">
+        <a href="{% url 'tienda' %}" style="color: #ffffff;"></i> Ir a todos los productos.</a>
+        <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
+        <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
+    </div>
 
-        <div class="Cart-Items">
-              <div class="image-box">
-                  <img src="images/apple.png">
-              </div>
-              <div class="about">
-                  <h1 class="title">Apple Juice</h1>
-                  <h3 class="subtitle">250ml</h3>
-                  <img src="{% static 'core/IMG/veg.png' %}" >
-              </div>
-              <div class="counter">
-                  <div class="btn">+</div>
-                  <div class="count">2</div>
-                  <div class="btn">-</div>
-              </div>
-              <div class="prices">
-                  <div class="amount">$2.99</div>
-                  <div class="save"><u>Save for later</u></div>
-                  <div class="remove"><u>Remove</u></div>
-              </div>
-        </div>
 
-        <div class="Cart-Items pad">
-              <div class="image-box">
-                  <img src="images/grapes.png" >
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+    <!-- NAVBAR -->
+    
+    <div class="container px-3 my-5 clearfix">
+        <!-- Shopping cart table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Carrito de compras</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered m-0">
+                    <thead>
+                      <tr>
+                        <!-- Set columns width -->
+                        <th class="text-center py-3 px-4" style="min-width: 400px;">Nombre de producto &amp; Detalles</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Precio</th>
+                        <th class="text-center py-3 px-4" style="width: 120px;">Cantidad</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                        <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+            
+                      <tr>
+                        <td class="p-4">
+                          <div class="media align-items-center">
+                            <img src="https://casamarilla.vtexassets.com/arquivos/ids/250023-1200-auto?v=638175988573870000&width=1200&height=auto&aspect=true" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                            <div class="media-body">
+                              <a href="#" class="d-block text-dark">Bajo Electrico</a>
+                              <small>
+                                <span class="text-muted">Color:</span>
+                                <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
+                                <span class="text-muted">Size: </span> EU 37 &nbsp;
+                                <span class="text-muted">Ships from: </span> China
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$57.55</td>
+                        <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
+                        <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                      </tr>
+            
+                      <tr>
+                        <td class="p-4">
+                          <div class="media align-items-center">
+                            <img src="https://casamarilla.vtexassets.com/arquivos/ids/250023-1200-auto?v=638175988573870000&width=1200&height=auto&aspect=true" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                            <div class="media-body">
+                              <a href="#" class="d-block text-dark">Bajo Electrico</a>
+                              <small>
+                                <span class="text-muted">Color:</span>
+                                <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#000;"></span> &nbsp;
+                                <span class="text-muted">Storage: </span> 32GB &nbsp;
+                                <span class="text-muted">Warranty: </span> Standard - 1 year &nbsp;
+                                <span class="text-muted">Ships from: </span> China
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>
+                        <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>
+                        <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                      </tr>
+            
+                      <tr>
+                        <td class="p-4">
+                          <div class="media align-items-center">
+                            <img src="https://casamarilla.vtexassets.com/arquivos/ids/250023-1200-auto?v=638175988573870000&width=1200&height=auto&aspect=true" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                            <div class="media-body">
+                              <a href="#" class="d-block text-dark">Bajo Electrico</a>
+                              <small>
+                                <span class="text-muted">Ships from: </span> Germany
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>
+                        <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>
+                        <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                      </tr>
+            
+                    </tbody>
+                  </table>
+                </div>
+                <!-- / Shopping cart table -->
+            
+                <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+          
+                  <div class="d-flex">
+
+                    <div class="text-right mt-4">
+                      <label class="text-muted font-weight-normal m-0">Precio total</label>
+                      <div class="text-large"><strong>$1164.65</strong></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="float-right">
+                  <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Volver a la tienda</button>
+                  <button type="button" class="btn btn-lg btn-primary mt-2">Comprar</button>
+                </div>
+            
               </div>
-              <div class="about">
-                  <h1 class="title">Grapes Juice</h1>
-                  <h3 class="subtitle">250ml</h3>
-                  <img src="{% static 'core/IMG/veg.png' %}" >
-              </div>
-              <div class="counter">
-                  <div class="btn">+</div>
-                  <div class="count">1</div>
-                  <div class="btn">-</div>
-              </div>
-              <div class="prices">
-                  <div class="amount">$3.19</div>
-                  <div class="save"><u>Save for later</u></div>
-                  <div class="remove"><u>Remove</u></div>
-              </div>
-        </div>
-      <hr> 
-      <div class="checkout">
-      <div class="total">
-          <div>
-              <div class="Subtotal">Sub-Total</div>
-              <div class="items">2 items</div>
           </div>
-          <div class="total-amount">$6.18</div>
       </div>
-      <button class="button">Checkout</button></div>
- </div>
+   
+    
  <!--Bootstrap -->
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -90,6 +158,7 @@
 </body>
 
 </html>
+
 
 
 
