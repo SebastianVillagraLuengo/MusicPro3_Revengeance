@@ -116,3 +116,14 @@ def eliminacion_prod(request, nombreProducto):
     messages.success(request, 'Producto eliminado con éxito')
 
     return redirect('tienda_admin')
+
+def modificar_productos(request, id):
+    producto = Producto.objects.get(id=id)
+    tipo_producto = TipoProducto.objects.all()
+
+    variables = {
+        'producto':producto,
+        'tipo_producto':tipo_producto
+    }
+
+    return redirect(request, 'core/modificarProductos.html',variables)
