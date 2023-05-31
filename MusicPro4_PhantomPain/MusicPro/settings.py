@@ -113,10 +113,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-USE_DECIMAL_SEPARATOR = True
-DECIMAL_SEPARATOR = ","
-USE_THOUSAND_SEPARATOR = True
-THOUSAND_SEPARATOR = "."
+
 
 
 # Static files (CSS, JavaScript, Images)

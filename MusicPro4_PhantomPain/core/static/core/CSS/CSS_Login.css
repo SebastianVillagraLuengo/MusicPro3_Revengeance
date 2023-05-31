@@ -117,6 +117,7 @@ q{
   color: var(--cnegro);
 }
 
+
 .form-terminos {
   margin-left: 15px;
   position: relative;
@@ -222,3 +223,26 @@ footer {
   float: right;
 }
 
+.tipoProducto {
+  margin-bottom: 30px;
+}
+
+.tipoProducto label {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--ctexto);
+}
+
+.tipoProducto select {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 1px solid var(--ctexto);
+}
+
+.tipoProducto select:focus + label {
+  font-weight: bold;
+  color: var(--cnegro);
+}

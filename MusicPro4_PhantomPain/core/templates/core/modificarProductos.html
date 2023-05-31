@@ -48,25 +48,25 @@
                     <form action="" class="form" id="form" autocomplete="off" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <input type="hidden" name="idProd" id="idProd" value="{{ producto.id }}">
-                      <p class="form-titulo">Agrega un producto</p>
+                      <p class="form-titulo">Modificar productos</p>
                       <div class="form-input nomProd">
                         <input type="text" id="nomProd" name="nomProd" required value="{{producto.nombreProducto}}">
                         <label for="nomProd">Nombre del producto</label>
                         <p class="mensajeError"></p>
                       </div>
                       <div class="form-input descProd">
-                        <input type="text" id="descProd" name="descProd" required value="{{producto.descripcionProducto}}">
-                        <label for="descProd">Descripcion</label>
+                        <input type="text" id="descripcionProducto" name="descripcionProducto" required value="{{producto.descripcionProducto}}">
+                        <label for="descripcionProducto">Descripcion</label>
                         <p class="mensajeError"></p>
                       </div>
                       <div class="form-input precio">
-                        <input type="number" id="precio" name="precio" required value="{{producto.precioProducto}}">
-                        <label for="precio">Precio</label>
+                        <input type="number" id="precioProducto" name="precioProducto"  required value="{{producto.precioProducto }}" step="1">
+                        <label for="precioProducto">Precio</label>
                         <p class="mensajeError"></p>
                       </div>
                       <div class="form-input cantidad">
-                        <input type="number" id="cantidad" name="cantidad" required value="{{producto.stockProducto}}">
-                        <label for="cantidad">Cantidad</label>
+                        <input type="number" id="stockProducto" name="stockProducto" required value="{{producto.stockProducto}}" step="1">
+                        <label for="stockProducto">Cantidad</label>
                         <p class="mensajeError"></p>
                         <p class="mensajeError" id="mensajeError"></p>
                       </div>
@@ -75,31 +75,38 @@
                         <select name="tipo_producto" id="tipo_producto">
                           <option value="">Seleccionar</option>
                           {% for m in tipo_producto %}
-                          <option
-
-                          {% if m.id == producto.tipo_producto.id %}
-                          {{'selected'}}
-                          {% endif %}
-
-                           value="{{ m.id }}">{{m.nombreTipo}}</option>
+                          <option value="{{ m.id }}" {% if m.id == producto.tipoNombre.id %}selected{% endif %}>{{m.nombreTipo}}</option>
                           {% endfor %}
                       </div>
                       <div class="form-group">
-                        <label for="foto_1">Foto Producto: (Obligatoria) </label>
-                        <input type="file" name="foto_1" id="foto_1" required value="{{producto.imagenUno}}">
+                        <label for="imagenUno">Foto Producto: (Obligatoria) </label>
+                        <input type="file" name="imagenUno" id="imagenUno" required>
+                        {% if producto.imagenUno %}
+                          <img src="{{ producto.imagenUno.url }}" alt="Imagen Uno" style="width: 100%;">
+                        {% endif %}
                       </div>
                       <div class="form-group">
-                        <label for="foto_2">Foto Producto 2:  (opcional)</label>
-                        <input type="file" name="foto_2" id="foto_2" value="{{producto.imagenDos}}" >
+                        <label for="imagenDos">Foto Producto 2: (opcional)</label>
+                        <input type="file" name="imagenDos" id="imagenDos">
+                        {% if producto.imagenDos %}
+                          <img src="{{ producto.imagenDos.url }}" alt="Imagen Dos" style="width: 100%;">
+                        {% endif %}
                       </div>
                       <div class="form-group">
-                        <label for="foto_3">Foto Producto 3: (opcional)</label>
-                        <input type="file" name="foto_3" id="foto_3" value="{{producto.imagenTres}}" >
+                        <label for="imagenTres">Foto Producto 3: (opcional)</label>
+                        <input type="file" name="imagenTres" id="imagenTres">
+                        {% if producto.imagenTres %}
+                          <img src="{{ producto.imagenTres.url }}" alt="Imagen Tres" style="width: 100%;">
+                        {% endif %}
                       </div>
                       <div class="form-group">
-                        <label for="foto_4">Foto Producto 4: (opcional)</label>
-                        <input type="file" name="foto_4" id="foto_4" value="{{producto.imagenCuatro}}" >
+                        <label for="imagenCuatro">Foto Producto 4: (opcional)</label>
+                        <input type="file" name="imagenCuatro" id="imagenCuatro">
+                        {% if producto.imagenCuatro %}
+                          <img src="{{ producto.imagenCuatro.url }}" alt="Imagen Cuatro" style="width: 100%;">
+                        {% endif %}
                       </div>
+                      
                       <div class="form-boton" >
                         <input type="submit" value="Enviar">
                       </div>
@@ -110,7 +117,7 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'core/js/aaaa.js' %}"></script>
+    <script src="{% static 'core/js/Valid_registro.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

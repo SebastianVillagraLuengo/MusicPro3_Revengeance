@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto,TipoProducto
 from django.contrib import messages
 
@@ -118,12 +118,27 @@ def eliminacion_prod(request, nombreProducto):
     return redirect('tienda_admin')
 
 def modificar_productos(request, id):
-    producto = Producto.objects.get(id=id)
+    producto = get_object_or_404(Producto, pk=id)
     tipo_producto = TipoProducto.objects.all()
 
-    variables = {
-        'producto':producto,
-        'tipo_producto':tipo_producto
-    }
+    if request.method == 'POST':
+        producto.nombreProducto = request.POST.get('nomProd')
+        producto.descripcionProducto = request.POST.get('descripcionProducto')
+        producto.precioProducto = request.POST.get('precioProducto')
+        producto.stockProducto = request.POST.get('stockProducto')
+        producto.tipoNombre_id = request.POST.get('tipo_producto')
 
-    return render(request, 'core/modificarProductos.html',variables)
+        # Actualizar las imágenes solo si se proporcionan nuevos archivos
+        if 'imagenUno' in request.FILES:
+            producto.imagenUno = request.FILES['imagenUno']
+        if 'imagenDos' in request.FILES:
+            producto.imagenDos = request.FILES['imagenDos']
+        if 'imagenTres' in request.FILES:
+            producto.imagenTres = request.FILES['imagenTres']
+        if 'imagenCuatro' in request.FILES:
+            producto.imagenCuatro = request.FILES['imagenCuatro']
+
+        producto.save()
+        return redirect('tienda_admin')
+    
+    return render(request, 'core/modificarProductos.html', {'producto': producto, 'tipo_producto': tipo_producto})
