@@ -33,7 +33,7 @@ class TipoProducto(models.Model):
 #Tabla de modelos3d
 class Producto(models.Model):
     #Llave primaria
-    nombreProducto = models.CharField(max_length=25,verbose_name='El nombre asociado al producto')
+    nombreProducto = models.CharField(max_length=400,verbose_name='El nombre asociado al producto')
     descripcionProducto = models.CharField(max_length=2000,verbose_name='La descripción asociada al producto en cuestión')
     precioProducto = models.IntegerField(verbose_name='El precio asociado al producto')
     stockProducto = models.IntegerField(verbose_name='El stock asociado al producto')
