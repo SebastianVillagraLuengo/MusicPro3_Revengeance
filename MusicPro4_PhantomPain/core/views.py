@@ -4,8 +4,9 @@ from django.contrib import messages
 
 def home(request):
     productos = Producto.objects.all()
+    oferta = Producto.objects.filter(tipoNombre='3')
     data = {
-        'productos': productos
+        'oferta': oferta
     }
     return render(request, 'core/index.html', data)
 # Create your views here.

@@ -193,15 +193,13 @@
 
 
 
-        <br>
-
         <section class="product">
             <h2 class="product-category">Más vendidos</h2>
 
             <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
             <div class="product-container">
-                {% for p in productos %}
+                {% for p in oferta %}
                 <div class="product-card">
                     {% if p.imagenUno %}
                     <div class="product-image">

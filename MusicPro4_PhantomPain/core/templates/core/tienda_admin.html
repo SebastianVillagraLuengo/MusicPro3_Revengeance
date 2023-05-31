@@ -467,8 +467,7 @@
   <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
   <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
   <div class="product-container">
-   {% if p.tipoNombre == Accesorios %}
-    {% for p in productos%}
+    {% for p in productos %}
     <div class="product-card">
         {% if p.imagenUno %}
         <div class="product-image">
@@ -483,7 +482,6 @@
         </div>
     </div>
     {% endfor %}
-    {% endif %}
 </div>
 </section>
 <!--Java script -->
