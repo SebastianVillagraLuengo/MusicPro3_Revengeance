@@ -18,7 +18,18 @@ function myFunction() {
         });
     });
 })();
+(function () {
+  const btnConfirmacion = document.querySelectorAll(".btnConfirmacion");
 
+  btnConfirmacion.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          const confirmacion = confirm('¿Seguro que deseas agregar este producto?');
+          if (!confirmacion) {
+              e.preventDefault();
+          }
+      });
+  });
+})();
 
 
   const productContainers = [...document.querySelectorAll('.product-container')];

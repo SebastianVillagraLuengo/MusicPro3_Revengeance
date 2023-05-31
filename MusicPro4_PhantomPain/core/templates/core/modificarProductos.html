@@ -25,7 +25,7 @@
     <div class="topnav-right">
     <a href="{% url 'tienda_admin' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos.</a>
     <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
-    <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-upload"></i> Agregar productos</a>
+    <a href="{% url 'agregar_productos' %}"><i class="fa-solid fa-upload"></i> Agregar productos</a>
     <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión.</a>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -75,35 +75,36 @@
                         <select name="tipo_producto" id="tipo_producto">
                           <option value="">Seleccionar</option>
                           {% for m in tipo_producto %}
-                          <option value="{{ m.id }}" {% if m.id == producto.tipoNombre.id %}selected{% endif %}>{{m.nombreTipo}}</option>
+                            <option value="{{ m.id }}" {% if m.id == producto.tipoNombre.id %}selected{% endif %}>{{m.nombreTipo}}</option>
                           {% endfor %}
+                        </select>
                       </div>
                       <div class="form-group">
                         <label for="imagenUno">Foto Producto: (Obligatoria) </label>
                         <input type="file" name="imagenUno" id="imagenUno" required>
                         {% if producto.imagenUno %}
-                          <img src="{{ producto.imagenUno.url }}" alt="Imagen Uno" style="width: 100%;">
+                          <img src="{{ producto.imagenUno.url }}" alt="Imagen Uno" style="width: 100%; border-radius: 10px;">
                         {% endif %}
                       </div>
                       <div class="form-group">
                         <label for="imagenDos">Foto Producto 2: (opcional)</label>
                         <input type="file" name="imagenDos" id="imagenDos">
                         {% if producto.imagenDos %}
-                          <img src="{{ producto.imagenDos.url }}" alt="Imagen Dos" style="width: 100%;">
+                          <img src="{{ producto.imagenDos.url }}" alt="Imagen Dos" style="width: 100%; border-radius: 10px;">
                         {% endif %}
                       </div>
                       <div class="form-group">
                         <label for="imagenTres">Foto Producto 3: (opcional)</label>
                         <input type="file" name="imagenTres" id="imagenTres">
                         {% if producto.imagenTres %}
-                          <img src="{{ producto.imagenTres.url }}" alt="Imagen Tres" style="width: 100%;">
+                          <img src="{{ producto.imagenTres.url }}" alt="Imagen Tres" style="width: 100%; border-radius: 10px;">
                         {% endif %}
                       </div>
                       <div class="form-group">
                         <label for="imagenCuatro">Foto Producto 4: (opcional)</label>
                         <input type="file" name="imagenCuatro" id="imagenCuatro">
                         {% if producto.imagenCuatro %}
-                          <img src="{{ producto.imagenCuatro.url }}" alt="Imagen Cuatro" style="width: 100%;">
+                          <img src="{{ producto.imagenCuatro.url }}" alt="Imagen Cuatro" style="width: 100%; border-radius: 10px;">
                         {% endif %}
                       </div>
                       
