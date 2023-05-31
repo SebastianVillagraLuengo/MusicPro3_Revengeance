@@ -178,7 +178,14 @@
                         <span class="discount-tag"></span>    
                         <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
                         {% endif %}
-                        <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
+                          </div>
+                          <div class="col-md-6">
+                            <a type="button" class="card-btn btn btn-primary" href="modificar_productos/{{p.id}}" style="text-align: center;">Editar</a>
+                          </div>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
