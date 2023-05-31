@@ -38,13 +38,13 @@
           <div class="container">
             {%if messages%}
             {%for message in messages%}
-            <div class="alert alert-dismissible alert-success">
+            <div class="alert alert-dismissible alert-danger" style="text-align: center; justify-content: center;">
                <button type="button"class="close"data-dismiss="alert">&times;</button>
                <strong class="text-dark">{{message}}</strong>
             </div>
             {% endfor %}
             {%endif%}
-            <form action="funcion_login" class="form" id="form" method="POST">
+            <form action="{% url 'funcion_login' %}" class="form" id="form" method="POST">
               {% csrf_token %}
               <p class="form-titulo">Inicio de sesión </p>
               <div class="form-input nombre">
@@ -61,7 +61,7 @@
                 <a href="{% url 'Registro' %}">¡Registrate Aqui!</a>
               </div>
               <div class="form-boton" >
-                 <input type="submit" href="{% url 'vista_usuario' %}" value="Enviar">
+                 <input type="submit" value="Enviar">
               </div>
               <p class="mensajeCorrecto"></p>
             </form>
