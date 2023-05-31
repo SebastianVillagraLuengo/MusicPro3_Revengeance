@@ -232,126 +232,21 @@
             <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
             <div class="product-container">
+                {% for p in bajos %}
                 <div class="product-card">
+                    {% if p.imagenUno %}
                     <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo01.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
+                        <span class="discount-tag"></span>    
+                        <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+                        {% endif %}
+                        <a type="button" class="card-btn btnEliminacion" href="eliminacion_prod/{{p.nombreProducto}}" style="text-align: center;">Eliminar</a>
                     </div>
                     <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico </h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$150.000</span><span class="actual-price"></span>
+                        <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+                        <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo02.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$200.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$120.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$250.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$400.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$1.200.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$700.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$900.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$250.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag"></span>
-                        <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
-                        <button class="card-btn">Comprar</button>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-brand">Bajo Electrico</h4>
-                        <h8 class="product-brand">Bajo Electrico</h8><br>
-                        <span class="price">$800.000</span><span class="actual-price"></span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
     </div>

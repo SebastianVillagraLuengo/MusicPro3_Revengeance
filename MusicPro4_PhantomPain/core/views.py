@@ -8,12 +8,13 @@ def home(request):
     equipos = Producto.objects.filter(tipoNombre='2')
     accesorios = Producto.objects.filter(tipoNombre='3')
     oferta = Producto.objects.filter(tipoNombre='4')
-
+    bajos = Producto.objects.filter(nombreProducto__icontains='Bajo')
     data = {
         'oferta': oferta,
         'instrumentos': instrumentos,
         'equipos': equipos,
-        'accesorios': accesorios
+        'accesorios': accesorios,
+        'bajos': bajos
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
