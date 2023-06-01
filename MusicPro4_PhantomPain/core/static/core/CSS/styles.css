@@ -123,7 +123,9 @@ body{
   top: 10px;
   text-transform: capitalize;
 }
-
+img {
+  border: 2px solid #555;
+}
 .card-btn {
   position: absolute;
   bottom: 10px;
