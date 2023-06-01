@@ -155,5 +155,5 @@ def funcion_login(request):
             return redirect('vista_usuario')  # Cambia 'vista_usuario' con el nombre de tu vista principal
         else:
             error_message = "Credenciales inválidas. Por favor, intenta nuevamente."
-            return render(request, 'formularioLogin.html', {'error_message': error_message})
+            return render(request, 'auth/formularioLogin.html', {'error_message': error_message})
     return render(request, 'formularioLogin.html')
