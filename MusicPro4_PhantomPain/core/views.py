@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required, permission_required
+
+
 def home(request):
     productos = Producto.objects.all()
     instrumentos = Producto.objects.filter(tipoNombre='1')
@@ -21,6 +24,7 @@ def home(request):
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
+
 def producto(request):
     return render(request, 'core/producto.html')
 
@@ -30,6 +34,7 @@ def html_registro(request):
 def html_login(request):
     return render(request, 'core/formularioLogin.html')
 
+@login_required
 def tienda(request):
     productos = Producto.objects.all()
     instrumentos = Producto.objects.filter(tipoNombre='1')
@@ -45,9 +50,11 @@ def tienda(request):
     }
     return render(request, 'core/tienda.html', data)
 
+@login_required
 def vista_usuario(request):
     return render(request, 'core/vista_usuario.html')
 
+@permission_required('app.add_producto')
 def vista_admin(request):
     productos = Producto.objects.all()
     data = {
@@ -56,6 +63,7 @@ def vista_admin(request):
     return render(request, 'core/vista_admin.html', data)
 
 
+@permission_required('app.add_producto')
 def tienda_admin(request):
     productos = Producto.objects.all()
     instrumentos = Producto.objects.filter(tipoNombre='1')
@@ -71,6 +79,7 @@ def tienda_admin(request):
     }
     return render(request, 'core/tienda_admin.html', data)
 
+@permission_required('app.add_producto')
 def agregar_productos(request):
     tipo_producto = TipoProducto.objects.all()
     variables ={
@@ -79,10 +88,11 @@ def agregar_productos(request):
 
     return render(request, 'core/formularioAgregarProductos.html', variables)
 
+#PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
 def carrito(request):
     return render(request, 'core/carrito.html')
 
-
+@permission_required('app.add_producto')
 def formProducto(request):
     tipo_producto = TipoProducto.objects.all()
     variables ={
@@ -112,7 +122,7 @@ def formProducto(request):
 
     return redirect(request, 'core/formularioAgregarProductos.html')
 
-
+@permission_required('app.add_producto')
 def eliminacion_prod(request, nombreProducto):
     producto = Producto.objects.get(nombreProducto = nombreProducto)
     producto.delete()
@@ -120,6 +130,7 @@ def eliminacion_prod(request, nombreProducto):
 
     return redirect('tienda_admin')
 
+@permission_required('app.add_producto')
 def modificar_productos(request, id):
     producto = get_object_or_404(Producto, pk=id)
     tipo_producto = TipoProducto.objects.all()
@@ -182,7 +193,7 @@ def registro_view(request):
                 # Inicia sesión automáticamente después del registro
                 user = authenticate(request, username=email, password=password)
                 login(request, user)
-                return redirect('Login')  # Redirige a la página de inicio después del registro exitoso
+                return redirect('login')  # Redirige a la página de inicio después del registro exitoso
             except Exception as e:
                 messages.error(request, f'Error al registrar el usuario: {str(e)}')
         else:

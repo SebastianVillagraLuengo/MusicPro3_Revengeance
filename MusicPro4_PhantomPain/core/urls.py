@@ -7,8 +7,8 @@ from .views import home,producto,html_registro,html_login,tienda,vista_usuario,v
 urlpatterns = [
     path('', home, name='index'),
     path('producto', producto, name='producto'),
-    path('registro', html_registro, name='Registro'),
-    path('login', html_login, name='Login'),
+    path('registro', html_registro, name='registro'),
+    path('login', html_login, name='login'),
     path('tienda', tienda, name='tienda'),
     path('usuario', vista_usuario, name='vista_usuario'),
     path('vista_admin', vista_admin, name='vista_admin'),

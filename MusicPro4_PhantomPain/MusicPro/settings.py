@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+LOGIN_URL = 'login'
 
 # Application definition
 

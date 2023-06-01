@@ -23,8 +23,8 @@
        <div class="topnav" id="myTopnav">
         <a href="{% url 'index' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
         <div class="topnav-right">
-          <a href="{% url 'Login' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
-          <a href="{% url 'Registro' %}"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
+          <a href="{% url 'login' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Iniciar-Sesión.</a>
+          <a href="{% url 'registro' %}"><i class="fa-sharp fa-solid fa-feather-pointed" style="color: #ffffff;"></i> Crear-Cuenta.</a>
           <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> Carrito de compras.</a>
         </div>
 
@@ -89,7 +89,7 @@
             </div>
             <div>
               <q>¿Tienes una cuenta ya?</q>
-              <a href="{% url 'Login' %}">Inicia sesion aquí</a>
+              <a href="{% url 'login' %}">Inicia sesion aquí</a>
             </div>
             <div class="form-boton">
               <input type="submit" value="Enviar">
