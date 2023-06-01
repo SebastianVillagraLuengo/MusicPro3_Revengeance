@@ -48,7 +48,7 @@
           </div>
           {% endfor %}
           {%endif%}
-          <form action="" class="form" id="form" autocomplete="off" method="POST">
+          <form action="{% url 'registro_view' %}" class="form" id="form" autocomplete="off" method="POST">
             {% csrf_token %}
             <p class="form-titulo">Regístrate</p>
             <div class="form-input nombre">

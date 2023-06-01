@@ -3,7 +3,8 @@ from .models import Producto,TipoProducto
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_protect
 def home(request):
     productos = Producto.objects.all()
     instrumentos = Producto.objects.filter(tipoNombre='1')
@@ -154,7 +155,37 @@ def funcion_login(request):
             login(request, user)
             return redirect('vista_usuario')  # Cambia 'vista_usuario' con el nombre de tu vista principal
         else:
-            messages.error(request, 'No se pudo iniciar sesión')
+            messages.error(request, 'El usuario y/o contraseña no coinciden o no existen.')
             return render(request, 'core/formularioLogin.html')
             
     return render(request, 'core/formularioLogin.html')
+
+@csrf_protect
+def registro_view(request):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        email = request.POST['email']
+        celular = request.POST['celular']
+        password = request.POST['password']
+        repeat_password = request.POST['repeatPassword']
+
+        if password == repeat_password:
+            try:
+                # Crea un nuevo usuario utilizando la tabla User de Django
+                user = User.objects.create_user(username=email, password=password)
+                # Agrega los campos personalizados al usuario
+                user.first_name = nombre
+                user.last_name = apellido
+                user.email = email
+                user.save()
+                # Inicia sesión automáticamente después del registro
+                user = authenticate(request, username=email, password=password)
+                login(request, user)
+                return redirect('Login')  # Redirige a la página de inicio después del registro exitoso
+            except Exception as e:
+                messages.error(request, f'Error al registrar el usuario: {str(e)}')
+        else:
+            messages.error(request, 'Las contraseñas no coinciden')
+
+    return render(request, 'core/formularioRegistro.html')
