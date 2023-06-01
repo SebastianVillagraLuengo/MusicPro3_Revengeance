@@ -54,7 +54,7 @@ def tienda(request):
 def vista_usuario(request):
     return render(request, 'core/vista_usuario.html')
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def vista_admin(request):
     productos = Producto.objects.all()
     data = {
@@ -63,7 +63,7 @@ def vista_admin(request):
     return render(request, 'core/vista_admin.html', data)
 
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def tienda_admin(request):
     productos = Producto.objects.all()
     instrumentos = Producto.objects.filter(tipoNombre='1')
@@ -79,7 +79,7 @@ def tienda_admin(request):
     }
     return render(request, 'core/tienda_admin.html', data)
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def agregar_productos(request):
     tipo_producto = TipoProducto.objects.all()
     variables ={
@@ -92,7 +92,7 @@ def agregar_productos(request):
 def carrito(request):
     return render(request, 'core/carrito.html')
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def formProducto(request):
     tipo_producto = TipoProducto.objects.all()
     variables ={
@@ -122,7 +122,7 @@ def formProducto(request):
 
     return redirect(request, 'core/formularioAgregarProductos.html')
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def eliminacion_prod(request, nombreProducto):
     producto = Producto.objects.get(nombreProducto = nombreProducto)
     producto.delete()
@@ -130,7 +130,7 @@ def eliminacion_prod(request, nombreProducto):
 
     return redirect('tienda_admin')
 
-@permission_required('app.add_producto')
+@permission_required('core.add_producto')
 def modificar_productos(request, id):
     producto = get_object_or_404(Producto, pk=id)
     tipo_producto = TipoProducto.objects.all()
@@ -164,7 +164,11 @@ def funcion_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('vista_usuario')  # Cambia 'vista_usuario' con el nombre de tu vista principal
+            if user.has_perms(perms):      
+                 return redirect('vista_admin')
+            else:
+                 return redirect('vista_usuario') # Cambia 'vista_usuario' con el nombre de tu vista principal
+
         else:
             messages.error(request, 'El usuario y/o contraseña no coinciden o no existen.')
             return render(request, 'core/formularioLogin.html')
