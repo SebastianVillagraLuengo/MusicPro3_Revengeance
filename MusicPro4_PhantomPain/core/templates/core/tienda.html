@@ -12,6 +12,7 @@
          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          <!-- CSS Propio -->
         <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/tienda.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles.css' %}">
         <!-- ICONOS INCREÍBLES -->
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
@@ -165,50 +166,52 @@
             </div>
         </section>
          <!-- Primera fila-->
-         <section class="product"> 
-            <h2 class="product-category">Instrumentos</h2>
-            <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-            <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-                <div class="product-container">
-                    {% for p in instrumentos %}
-                    <div class="product-card">
-                        {% if p.imagenUno %}
-                        <div class="product-image">
-                            <span class="discount-tag"></span>    
-                            <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
-                            {% endif %}
-                            <button class="card-btn">Eliminar</button>
-                        </div>
-                        <div class="product-info">
-                            <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-                            <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-        </section>
+<section class="product">
+  <h2 class="product-category">Instrumentos</h2>
+
+  <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <div class="product-container">
+      {% for p in instrumentos %}
+      <div class="product-card">
+          {% if p.imagenUno %}
+          <div class="product-image">
+              <span class="discount-tag"></span>    
+              <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+              {% endif %}
+              <button class="card-btn">Comprar</button>
+          </div>
+          <div class="product-info">
+              <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+              <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</section>
 <!-- Primera fila-->
- <section class="product"> 
-   <h2 class="product-category">Equipos</h2>
-   <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-   <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-   <div class="product-container">
-    {% for p in equipos %}
-    <div class="product-card">
-        {% if p.imagenUno %}
-        <div class="product-image">
-            <span class="discount-tag"></span>    
-            <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
-            {% endif %}
-            <button class="card-btn">Eliminar</button>
-        </div>
-        <div class="product-info">
-            <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-            <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
-        </div>
-    </div>
-    {% endfor %}
-</div>
+<section class="product">
+  <h2 class="product-category">Equipos</h2>
+
+  <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+  <div class="product-container">
+      {% for p in equipos %}
+      <div class="product-card">
+          {% if p.imagenUno %}
+          <div class="product-image">
+              <span class="discount-tag"></span>    
+              <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+              {% endif %}
+              <button class="card-btn">Comprar</button>
+          </div>
+          <div class="product-info">
+              <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+              <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
 </section>
 <section class="product"> 
   <h2 class="product-category">Accesorios</h2>
@@ -217,19 +220,19 @@
   <div class="product-container">
     {% for p in accesorios %}
     <div class="product-card">
-        {% if p.imagenUno %}
-        <div class="product-image">
-            <span class="discount-tag"></span>    
-            <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
-            {% endif %}
-            <button class="card-btn">Comprar</button>
-        </div>
-        <div class="product-info">
-            <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-            <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
-        </div>
-    </div>
-    {% endfor %}
+      {% if p.imagenUno %}
+      <div class="product-image">
+          <span class="discount-tag"></span>    
+          <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+          {% endif %}
+          <button class="card-btn">Comprar</button>
+      </div>
+      <div class="product-info">
+          <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+          <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
+      </div>
+  </div>
+  {% endfor %}
 </div>
 </section>
 <!--Java script -->
