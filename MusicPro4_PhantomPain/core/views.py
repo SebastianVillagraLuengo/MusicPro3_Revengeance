@@ -164,7 +164,7 @@ def funcion_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if user.has_perms(perms):      
+            if user.has_perm('core.add_producto'):      
                  return redirect('vista_admin')
             else:
                  return redirect('vista_usuario') # Cambia 'vista_usuario' con el nombre de tu vista principal
