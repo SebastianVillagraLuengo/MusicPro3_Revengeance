@@ -206,14 +206,14 @@
                 <div class="product-card">
                     {% if p.imagenUno %}
                     <div class="product-image">
-                        <span class="discount-tag"></span>    
+                        <span class="discount-tag">999999999</span>    
                         <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
                         {% endif %}
                         <button class="card-btn">Comprar</button>
                     </div>
                     <div class="product-info">
                         <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-                        <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
+                        <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price">999999999</span>
                     </div>
                 </div>
                 {% endfor %}

@@ -253,7 +253,7 @@ img {
 .hero {
   /* Sizing */
   width: 100vw;
-  height: 100vh;
+  height: 87vh;
   
   /* Flexbox stuff */
   display: flex;
