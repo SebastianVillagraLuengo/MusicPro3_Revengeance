@@ -81,7 +81,33 @@ function myFunction() {
 
 
 
+    
+    function replaceButton() {
+      var button = document.getElementById('myButton');
+      var replacementDiv = document.getElementById('replacementDiv');
+      
+      button.classList.add('hidden');
+      replacementDiv.classList.remove('hidden');
+    }
+
+    function hideDiv() {
+      var button = document.getElementById('myButton');
+      var replacementDiv = document.getElementById('replacementDiv');
+      
+      button.classList.remove('hidden');
+      replacementDiv.classList.add('hidden');
+    }
 
 
 
-
+    function iniciarMap(){
+      var coord = {lat:-33.361320 ,lng: -70.734677};
+      var map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 10,
+        center: coord
+      });
+      var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+      });
+  }
