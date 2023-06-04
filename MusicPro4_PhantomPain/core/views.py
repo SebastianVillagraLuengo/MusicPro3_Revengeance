@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto,TipoProducto
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required, permission_required
@@ -52,8 +52,20 @@ def tienda(request):
 
 @login_required
 def vista_usuario(request):
-    return render(request, 'core/vista_usuario.html')
-
+    productos = Producto.objects.all()
+    instrumentos = Producto.objects.filter(tipoNombre='1')
+    equipos = Producto.objects.filter(tipoNombre='2')
+    accesorios = Producto.objects.filter(tipoNombre='3')
+    oferta = Producto.objects.filter(tipoNombre='4')
+    bajos = Producto.objects.filter(nombreProducto__icontains='Bajo')
+    data = {
+        'oferta': oferta,
+        'instrumentos': instrumentos,
+        'equipos': equipos,
+        'accesorios': accesorios,
+        'bajos': bajos
+    }
+    return render(request, 'core/vista_usuario.html',data)
 @permission_required('core.add_producto')
 def vista_admin(request):
     productos = Producto.objects.all()
@@ -204,3 +216,8 @@ def registro_view(request):
             messages.error(request, 'Las contraseñas no coinciden')
 
     return render(request, 'core/formularioRegistro.html')
+
+
+def mostrar_producto(request, id):
+    producto = get_object_or_404(Producto, pk=id)
+    return render(request, 'core/producto.html', {'producto': producto})

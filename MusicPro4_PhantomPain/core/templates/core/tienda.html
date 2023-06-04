@@ -179,7 +179,7 @@
               <span class="discount-tag"></span>    
               <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="" style="border-radius: 10px;">
               {% endif %}
-              <button class="card-btn">Comprar</button>
+              <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
           </div>
           <div class="product-info">
               <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
@@ -203,7 +203,7 @@
               <span class="discount-tag"></span>    
               <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
               {% endif %}
-              <button class="card-btn">Comprar</button>
+              <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
           </div>
           <div class="product-info">
               <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
@@ -225,7 +225,7 @@
           <span class="discount-tag"></span>    
           <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
           {% endif %}
-          <button class="card-btn">Comprar</button>
+          <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
       </div>
       <div class="product-info">
           <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
