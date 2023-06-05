@@ -1,2 +1,3 @@
 django 
 pillow 
+jQuery (npm install jquery)

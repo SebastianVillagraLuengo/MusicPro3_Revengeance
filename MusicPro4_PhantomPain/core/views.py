@@ -246,7 +246,7 @@ def agregar_al_carrito(request, id):
         request.session['carrito_id'] = carrito.id
 
     # Crear una instancia del modelo ItemCarrito con el producto, el carrito y la cantidad
-    cantidad = 1  # Cambia este valor según tus necesidades
+    cantidad = int(request.POST.get('cantidad'))  # Cambia este valor según tus necesidades
     item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
 
     # Guardar el nuevo item del carrito
@@ -260,7 +260,7 @@ def actualizar_cantidad(request):
         product_id = request.POST.get('productId')
         quantity = request.POST.get('quantity')
         item = ItemCarrito.objects.get(pk=product_id)
-        item.cantidad_actualizada = quantity
+        item.cantidad_actualizada = int(quantity)  # Actualizar el valor de cantidad_actualizada
         item.save()
         return JsonResponse({'status': 'success'})
     else:
