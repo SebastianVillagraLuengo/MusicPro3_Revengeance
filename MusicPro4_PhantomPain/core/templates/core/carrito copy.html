@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- Head content goes here -->
+</head>
+<body>
+    <!-- Navbar code goes here -->
+    
+    <div class="container px-3 my-5 clearfix">
+        <!-- Shopping cart table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Carrito de compras</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered m-0">
+                        <thead>
+                            <tr>
+                                <th class="text-center py-3 px-4" style="min-width: 400px;">Nombre de producto &amp; Detalles</th>
+                                <th class="text-right py-3 px-4" style="width: 100px;">Precio</th>
+                                <th class="text-center py-3 px-4" style="width: 120px;">Cantidad</th>
+                                <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                                <th class="text-center align-middle py-3 px-0" style="width: 40px;">
+                                    <a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart">
+                                        <i class="ino ion-md-trash"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td class="p-4">
+                                    <div class="media align-items-center">
+                                        <img src="{{ item.producto.imagen.url }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                        <div class="media-body">
+                                            <a href="#" class="d-block text-dark">{{ item.producto.nombre }}</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right font-weight-semibold align-middle p-4">${{ item.producto.precio }}</td>
+                                <td class="text-center font-weight-semibold align-middle p-4">{{ item.cantidad }}</td>
+                                <td class="text-right font-weight-semibold align-middle p-4">${{ item.subtotal }}</td>
+                                <td class="text-center align-middle px-0">
+                                    <a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            
+                <!-- Remaining code goes here -->
+            
+            </div>
+        </div>
+    </div>
+   
+    <!-- Bootstrap scripts go here -->
+</body>
+</html>

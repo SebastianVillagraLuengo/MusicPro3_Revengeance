@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto,TipoProducto
+from .models import Producto,TipoProducto,Carrito,ItemCarrito
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
@@ -102,8 +102,17 @@ def agregar_productos(request):
 
 #PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
 def carrito(request):
-    return render(request, 'core/carrito.html')
-
+    # Obtener el carrito actual del usuario basado en la sesión
+    carrito_actual = Carrito.objects.get(id=request.session['carrito_id'])
+    
+    # Obtener los elementos del carrito desde la base de datos
+    items = ItemCarrito.objects.filter(carrito=carrito_actual)
+    
+    # Pasar los elementos del carrito al contexto de la plantilla
+    context = {'items': items}
+    
+    return render(request, 'core/carrito.html', context)
+    
 @permission_required('core.add_producto')
 def formProducto(request):
     tipo_producto = TipoProducto.objects.all()
@@ -221,3 +230,38 @@ def registro_view(request):
 def mostrar_producto(request, id):
     producto = get_object_or_404(Producto, pk=id)
     return render(request, 'core/producto.html', {'producto': producto})
+
+@login_required
+def agregar_al_carrito(request, id):
+    # Obtener el producto utilizando el ID recibido
+    producto = get_object_or_404(Producto, id=id)
+
+    # Verificar si el carrito ya existe en la sesión
+    if 'carrito_id' in request.session:
+        # Obtener el carrito existente utilizando el carrito_id almacenado en la sesión
+        carrito = get_object_or_404(Carrito, id=request.session['carrito_id'])
+    else:
+        # Si el carrito no existe en la sesión, crear uno nuevo y almacenar su ID en la sesión
+        carrito = Carrito.objects.create(usuario=request.user)
+        request.session['carrito_id'] = carrito.id
+
+    # Crear una instancia del modelo ItemCarrito con el producto, el carrito y la cantidad
+    cantidad = 1  # Cambia este valor según tus necesidades
+    item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
+
+    # Guardar el nuevo item del carrito
+    item_carrito.save()
+
+    # Redirigir al usuario a la página del carrito o a la página de la tienda
+    return redirect('carrito')  # Ajusta el nombre de la URL según corresponda
+
+def actualizar_cantidad(request):
+    if request.method == 'POST' and request.is_ajax():
+        product_id = request.POST.get('productId')
+        quantity = request.POST.get('quantity')
+        item = ItemCarrito.objects.get(pk=product_id)
+        item.cantidad_actualizada = quantity
+        item.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})

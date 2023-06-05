@@ -100,11 +100,11 @@
               <li>Nombre completo: <span>{{ producto.nombreProducto }}</span></li>
             </ul>
           </div>
-
           <div class = "purchase-info">
-            <button type = "button" class = "btn">
-              Añadir al carrito <i class = "fas fa-shopping-cart"></i>
-            </button>
+            <form method="POST" action="{% url 'agregar_al_carrito' producto.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn">Añadir al carrito <i class="fas fa-shopping-cart"></i></button>
+            </form>
             <button type = "button" class = "btn"><a href="{% url 'tienda' %}" >Volver a la tienda</a></button>
           </div>
           <div class = "social-links">

@@ -1,5 +1,8 @@
 from django.db import models
 from datetime import date
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+
 
 # Create your models here.
 
@@ -64,3 +67,34 @@ class Detalle(models.Model):
     #LLAVES foranea
     fechaVenta=models.ForeignKey(Venta,on_delete=models.PROTECT,verbose_name='llave Venta-Detalle')
     nombreProducto=models.ForeignKey(Producto,on_delete=models.PROTECT,verbose_name='llave Venta-Detalle')
+
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey('Carrito', on_delete=models.CASCADE)
+    producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+    cantidad_actualizada = models.PositiveIntegerField(default=0)
+
+    def subtotal(self):
+        return self.producto.precioProducto * self.cantidad
+
+class Carrito(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Usuario', null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    ESTADO_CHOICES = (
+        ('abierto', 'Abierto'),
+        ('cerrado', 'Cerrado'),
+    )
+    estado = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='abierto')
+
+def actualizar_cantidad(request):
+    if request.method == 'POST' and request.is_ajax():
+        product_id = request.POST.get('productId')
+        quantity = request.POST.get('quantity')
+        item = ItemCarrito.objects.get(pk=product_id)
+        item.cantidad_actualizada = quantity
+        item.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})
