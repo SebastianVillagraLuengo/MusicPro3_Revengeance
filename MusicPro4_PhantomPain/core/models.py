@@ -87,3 +87,14 @@ class Carrito(models.Model):
         ('cerrado', 'Cerrado'),
     )
     estado = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='abierto')
+
+def actualizar_cantidad(request):
+    if request.method == 'POST' and request.is_ajax():
+        product_id = request.POST.get('productId')
+        quantity = request.POST.get('quantity')
+        item = ItemCarrito.objects.get(pk=product_id)
+        item.cantidad_actualizada = quantity
+        item.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})
