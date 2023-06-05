@@ -187,11 +187,33 @@
         {% endfor %}
     </div>
 </section>
+</section>
 <section class="hero">
     <div class="hero-inner">
-        <h1>¿Quienes somos?</h1>
-        <h2>La mejor tienda instrumentos...</h2>
-        <a href="http://127.0.0.1:5500/INDEX.HTML" class="btn">Encuentranos</a>
+
+        <span id="displayText"><h1>¿Quienes somos?</h1><br><h3> ¡Descubre la tienda musical que te inspirará a alcanzar nuevas notas y melodías!</h3><br><h3>En nuestra tienda, encontrarás un amplio catálogo de instrumentos musicales de alta calidad</h3><br><h3>desde guitarras y pianos hasta baterías y violines. </h3></span>
+        <br>
+        <button id="myButton" class="myButton" onclick="replaceButton()">Encuentranos</button>
+      
+
+        <div id="replacementDiv" class="hidden">
+            <h1>Tu melodía empieza aquí.</h1>
+            <div class="container">
+                <div id="map"></div>
+                <script src="{% static 'core/JS/script.js' %}"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBaHHft6gPwWJkYFs1HdDFNqHFGuR6rE&callback=iniciarMap"></script>
+                <br>
+                <div class="button-container">
+                <button class="hideButton" onclick="hideDiv()">Esconder Mapa</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
     </div>
 </section>
 

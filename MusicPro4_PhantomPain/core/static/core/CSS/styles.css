@@ -397,4 +397,28 @@ img {
     }
 
 
-    
+    .myButton {
+      width: 300px; /* Set the desired width */
+      height: 60px; /* Set the desired height */
+      background-color: black; /* Set the background color to black */
+      color: white; /* Set the text color to white */
+      border: 1px solid grey; /* Set a 1px solid grey border */
+      border-radius: 10px; /* Add round borders with a 10px radius */
+      cursor: pointer;
+      font-weight: bold; /* Make the font thicker */
+    }
+
+    .hideButton {
+
+      width: 300px; /* Set the desired width */
+      height: 60px; /* Set the desired height */
+      background-color: black; /* Set the background color to black */
+      color: white; /* Set the text color to white */
+      border: 1px solid grey; /* Set a 1px solid grey border */
+      border-radius: 10px; /* Add round borders with a 10px radius */
+      cursor: pointer;
+      font-weight: bold; /* Make the font thicker */
+    }
+    .button-container {
+      width: 1000px; /* Set the desired width of the container */
+    }
