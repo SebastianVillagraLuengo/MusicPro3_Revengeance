@@ -63,31 +63,6 @@
                                         data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {% for item in items %}
-                            <tr>
-                                <td class="p-4">
-                                    <div class="media align-items-center">
-                                        <img src="{{ item.producto.imagenUno.url }}"
-                                            class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                                        <div class="media-body">
-                                            <a href="#" class="d-block text-dark">{{ item.producto.nombreProducto }}</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-right font-weight-semibold align-middle p-4">${{ item.producto.precioProducto | intcomma }}</td>
-                                <td class="text-center font-weight-semibold align-middle p-4">
-                                    <button class="btn-quantity btn-minus" data-id="{{ item.producto.id }}" data-quantity="{{ item.cantidad }}">-</button>
-                                    <span class="quantity" data-quantity="{{ item.cantidad }}">{{ item.cantidad }}</span>
-                                    <button class="btn-quantity btn-plus" data-id="{{ item.producto.id }}" data-quantity="{{ item.cantidad }}">+</button>
-                                </td>
-                                <td class="text-right font-weight-semibold align-middle p-4">${{ item.subtotal | intcomma }}</td>
-                                <td class="text-center align-middle px-0"><a href="#"
-                                        class="shop-tooltip close float-none text-danger" title=""
-                                        data-original-title="Remove">×</a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
                     </table>
                 </div>
                 <!-- / Shopping cart table -->
@@ -129,20 +104,36 @@
     <script src="{% static 'core/JS/carrito.js' %}"></script>
 
     <script>
-        // Manejar eventos de los botones para cambiar las cantidades
-        $(document).ready(function() {
-            $('.btn-quantity').click(function() {
-                const btn = $(this);
-                const itemId = btn.data('id');
-                const currentQuantity = parseInt(btn.data('quantity'));
-                const inputQuantity = $(`.input-quantity[name="cantidad_${itemId}"]`);
-                const newQuantity = currentQuantity + (btn.hasClass('btn-plus') ? 1 : -1);
-                if (newQuantity >= 0) {
-                    inputQuantity.val(newQuantity);
-                    btn.data('quantity', newQuantity);
-                }
-            });
-        });
+      // Obtener el token CSRF del cookie
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      const csrftoken = getCookie('csrftoken');
+
+      // Agregar el token CSRF a la petición AJAX
+      function csrfSafeMethod(method) {
+        return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+          }
+        }
+      });
     </script>
 </body>
 </html>

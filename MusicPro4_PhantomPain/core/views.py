@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -101,12 +101,24 @@ def agregar_productos(request):
     return render(request, 'core/formularioAgregarProductos.html', variables)
 
 #PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
+@login_required
 def carrito(request):
-    # Obtener el carrito actual del usuario basado en la sesión
-    carrito_actual = Carrito.objects.get(id=request.session['carrito_id'])
+    # Verificar si el carrito_id está presente en la sesión
+    if 'carrito_id' in request.session:
+        # Obtener el carrito actual del usuario basado en el carrito_id almacenado en la sesión
+        carrito_actual = Carrito.objects.get(id=request.session['carrito_id'])
+    else:
+        # Si el carrito_id no está presente en la sesión, crear un nuevo carrito para el usuario
+        carrito_actual = Carrito.objects.create(usuario=request.user)
+        # Guardar el carrito_id en la sesión
+        request.session['carrito_id'] = carrito_actual.id
     
     # Obtener los elementos del carrito desde la base de datos
     items = ItemCarrito.objects.filter(carrito=carrito_actual)
+    
+    # Si el carrito está vacío, redirigir a la página de carrito vacío
+    if not items.exists():
+        return redirect('carritoVacio')
     
     # Pasar los elementos del carrito al contexto de la plantilla
     context = {'items': items}
@@ -265,3 +277,21 @@ def actualizar_cantidad(request):
         return JsonResponse({'status': 'success'})
     else:
         return JsonResponse({'status': 'error'})
+
+@login_required
+def carritoVacio(request):
+
+    return render(request, 'core/carritoVacio.html')
+
+
+@csrf_exempt
+def guardar_cantidades(request):
+    if request.method == 'POST':
+        item_id = request.POST.get('item_id')
+        cantidad = request.POST.get('cantidad')
+        item = ItemCarrito.objects.get(id=item_id)
+        item.cantidad = cantidad
+        item.save()
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=400)
