@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
+from django.db.models import F, Sum
+from decimal import Decimal
 
 
 def home(request):
@@ -103,25 +105,24 @@ def agregar_productos(request):
 #PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
 @login_required
 def carrito(request):
-    # Verificar si el carrito_id está presente en la sesión
     if 'carrito_id' in request.session:
-        # Obtener el carrito actual del usuario basado en el carrito_id almacenado en la sesión
         carrito_actual = Carrito.objects.get(id=request.session['carrito_id'])
     else:
-        # Si el carrito_id no está presente en la sesión, crear un nuevo carrito para el usuario
         carrito_actual = Carrito.objects.create(usuario=request.user)
-        # Guardar el carrito_id en la sesión
         request.session['carrito_id'] = carrito_actual.id
     
-    # Obtener los elementos del carrito desde la base de datos
     items = ItemCarrito.objects.filter(carrito=carrito_actual)
     
-    # Si el carrito está vacío, redirigir a la página de carrito vacío
     if not items.exists():
         return redirect('carritoVacio')
     
-    # Pasar los elementos del carrito al contexto de la plantilla
-    context = {'items': items}
+    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
+    if total is not None:
+        total = Decimal(total).quantize(Decimal('.00'))
+    else:
+        total = 0
+    
+    context = {'items': items, 'total': total}
     
     return render(request, 'core/carrito.html', context)
     
@@ -245,27 +246,30 @@ def mostrar_producto(request, id):
 
 @login_required
 def agregar_al_carrito(request, id):
-    # Obtener el producto utilizando el ID recibido
     producto = get_object_or_404(Producto, id=id)
 
-    # Verificar si el carrito ya existe en la sesión
     if 'carrito_id' in request.session:
-        # Obtener el carrito existente utilizando el carrito_id almacenado en la sesión
         carrito = get_object_or_404(Carrito, id=request.session['carrito_id'])
     else:
-        # Si el carrito no existe en la sesión, crear uno nuevo y almacenar su ID en la sesión
         carrito = Carrito.objects.create(usuario=request.user)
         request.session['carrito_id'] = carrito.id
 
-    # Crear una instancia del modelo ItemCarrito con el producto, el carrito y la cantidad
-    cantidad = 1  # Cambia este valor según tus necesidades
+    cantidad = 1
     item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
-
-    # Guardar el nuevo item del carrito
     item_carrito.save()
 
-    # Redirigir al usuario a la página del carrito o a la página de la tienda
-    return redirect('carrito')  # Ajusta el nombre de la URL según corresponda
+    # Recalcular el total del carrito
+    items = ItemCarrito.objects.filter(carrito=carrito)
+    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
+    if total is not None:
+        total = Decimal(total).quantize(Decimal('.00'))
+    else:
+        total = 0
+    carrito.total = total
+    carrito.estado = 'cerrado'
+    carrito.save()
+
+    return redirect('carrito')
 
 def actualizar_cantidad(request):
     if request.method == 'POST' and request.is_ajax():

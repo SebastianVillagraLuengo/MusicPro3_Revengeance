@@ -1,14 +1,17 @@
-// Obtener el token CSRF
-var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
 // Función para actualizar la cantidad en la base de datos mediante AJAX
 function updateQuantityInDatabase(productId, quantity) {
     var request = new XMLHttpRequest();
-    request.open('POST', 'actualizar-cantidad/');
+    request.open('POST', '/actualizar-cantidad/');
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('X-CSRFToken', csrfToken);
+    request.setRequestHeader('X-CSRFToken', csrftoken);
     request.onload = function() {
         // Maneja la respuesta de la petición AJAX si es necesario
+        if (request.status === 200) {
+            // Actualizar visualmente la cantidad en el botón correspondiente
+            var quantityElement = document.querySelector(`.btn-quantity[data-id="${productId}"] + .quantity`);
+            quantityElement.textContent = quantity;
+            quantityElement.dataset.quantity = quantity; // Actualizar el atributo data-quantity
+        }
     };
     request.send(JSON.stringify({
         productId: productId,
@@ -24,33 +27,32 @@ document.querySelectorAll('.btn-quantity').forEach(function(button) {
 
         if (button.classList.contains('btn-minus')) {
             // Restar uno a la cantidad
-            var quantity = parseInt(quantityElement.getAttribute('data-quantity'));
+            var quantity = parseInt(quantityElement.textContent);
             var updatedQuantity = quantity - 1;
             if (updatedQuantity < 1) {
                 updatedQuantity = 1; // Evita que la cantidad sea menor a 1
             }
             quantityElement.textContent = updatedQuantity;
-            button.parentNode.querySelector('.quantity').setAttribute('data-quantity', updatedQuantity);
-            updateQuantityInDatabase(button.getAttribute('data-id'), updatedQuantity);
+            quantityElement.dataset.quantity = updatedQuantity; // Actualizar el atributo data-quantity
+            updateQuantityInDatabase(button.dataset.id, updatedQuantity);
         } else if (button.classList.contains('btn-plus')) {
             // Sumar uno a la cantidad
-            var quantity = parseInt(quantityElement.getAttribute('data-quantity'));
+            var quantity = parseInt(quantityElement.textContent);
             var updatedQuantity = quantity + 1;
             quantityElement.textContent = updatedQuantity;
-            button.parentNode.querySelector('.quantity').setAttribute('data-quantity', updatedQuantity);
-            updateQuantityInDatabase(button.getAttribute('data-id'), updatedQuantity);
+            quantityElement.dataset.quantity = updatedQuantity; // Actualizar el atributo data-quantity
+            updateQuantityInDatabase(button.dataset.id, updatedQuantity);
         }
-        subtotalElement.textContent = (parseFloat(quantityElement.textContent) * parseFloat(subtotalElement.getAttribute('data-price'))).toFixed(2);
+        subtotalElement.textContent = (parseFloat(quantityElement.textContent) * parseFloat(subtotalElement.dataset.price)).toFixed(2);
         updateTotal();
     });
 });
 
 // Función para actualizar el total en tiempo real
 function updateTotal() {
-    var subtotals = document.querySelectorAll('.subtotal');
     var total = 0;
-    subtotals.forEach(function(subtotal) {
-        total += parseFloat(subtotal.textContent);
+    document.querySelectorAll('.subtotal').forEach(function(subtotalElement) {
+        total += parseFloat(subtotalElement.textContent);
     });
     document.querySelector('.total').textContent = total.toFixed(2);
 }
