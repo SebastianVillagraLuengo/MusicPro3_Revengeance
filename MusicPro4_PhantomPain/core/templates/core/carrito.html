@@ -28,7 +28,7 @@
         <a href="{% url 'vista_usuario' %}" class="active"><i class="fa fa-home"></i></i> Inicio.</a>
         <div class="topnav-right">
             <a href="{% url 'tienda' %}" style="color: #ffffff;"></i> Ir a todos los productos.</a>
-            <a href="http://127.0.0.1:5501/carrito.html"><i class="fa-solid fa-cart-shopping"
+            <a href="{% url 'carrito' %}"><i class="fa-solid fa-cart-shopping"
                     style="color: #ffffff;"></i> Carrito de compras.</a>
             <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket"
                     style="color: #ffffff;"></i> Cerrar Sesión.</a>
@@ -106,9 +106,9 @@
                 </div>
 
                 <div class="float-right">
-                    <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Volver a la
-                        tienda</button>
-                    <button type="button" class="btn btn-lg btn-primary mt-2">Comprar</button>
+                    <a type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" href="{% url 'tienda' %}">Volver a la
+                        tienda</a>
+                    <a type="button" class="btn btn-lg btn-primary mt-2" href="{% url 'compraExitosa' %}">Comprar</a>
                 </div>
 
             </div>

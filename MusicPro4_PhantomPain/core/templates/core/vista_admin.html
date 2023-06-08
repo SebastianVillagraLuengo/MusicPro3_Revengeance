@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusicPro - Inicio Administrador</title>
 
-         <!-- Bootstrap -->
-         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         <!-- CSS Propio -->
-        <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles.css' %}">
-        <!-- ICONOS INCREÍBLES -->
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CSS Propio -->
+    <link type="text/css" rel="stylesheet" href="{% static 'core/CSS/styles.css' %}">
+    <!-- ICONOS INCREÍBLES -->
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-        <link rel="icon" type="image/x-icon" href="{% static 'core/IMG/icono.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'core/IMG/icono.ico' %}">
 
 </head>
-<body>
-    
-      <!-- NAVBAR -->
-  <div class="topnav" id="myTopnav">
-    <a href="{% url 'vista_admin' %}" class="active"><i class="fa fa-home"></i></i> Inicio</a>
-    <div class="topnav-right">
-        <a href="{% url 'tienda_admin' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los productos</a>
-        <a href="{% url 'agregar_productos' %}"><i class="fa-solid fa-upload"></i> Agregar productos</a>
-        <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Cerrar Sesión</a>
-    </div>
 
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+<body>
+    {% load humanize %}
+    <!-- NAVBAR -->
+    <div class="topnav" id="myTopnav">
+        <a href="{% url 'vista_admin' %}" class="active"><i class="fa fa-home"></i></i> Inicio</a>
+        <div class="topnav-right">
+            <a href="{% url 'tienda_admin' %}"><i class="fa-solid fa-guitar" style="color: #ffffff;"></i> Ir a todos los
+                productos</a>
+            <a href="{% url 'agregar_productos' %}"><i class="fa-solid fa-upload"></i> Agregar productos</a>
+            <a href="{% url 'index' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i>
+                Cerrar Sesión</a>
+        </div>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
 
 
     <!-- NAVBAR -->
@@ -152,456 +157,270 @@
         a:active {
             color: white;
         }
-        img {
-  border: 2px solid #555;
-}
 
-.hidden {
-      display: none;
-    }
+        img {
+            border: 2px solid #555;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 
 
-<style>
-      #map {
-	height: 500px;
-	width: 100%;
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
 
-}
-
-        img { 
-                  border-radius: 5%;
-                }
-          a:hover {
-     color: #BFBFBF ;
-     text-decoration: underline;
         }
+
+        img {
+            border-radius: 5%;
+        }
+
+        a:hover {
+            color: #BFBFBF;
+            text-decoration: underline;
+        }
+
         body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
 
-html {
-  box-sizing: border-box;
-}
+        html {
+            box-sizing: border-box;
+        }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
 
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
 
-.card {
-  background-color: #22262b;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
+        .card {
+            background-color: #22262b;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
 
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #22262b;
-  color: white;
-}
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #22262b;
+            color: white;
+        }
 
-.container {
-  padding: 0 16px;
-}
+        .container {
+            padding: 0 16px;
+        }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
-.title {
-  color: grey;
-}
+        .title {
+            color: grey;
+        }
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
 
-.button:hover {
-  background-color: #555;
-}
+        .button:hover {
+            background-color: #555;
+        }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-      </style>
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
 
 
     <div class="slider-container">
-      <div class="menu">
-        <label for="slide-dot-1"></label>
-        <label for="slide-dot-2"></label>
-        <label for="slide-dot-3"></label>
-      </div>
-      <input id="slide-dot-1" type="radio" name="slides" checked>
-      <div class="slide slide-1"></div>
-      <input id="slide-dot-2" type="radio" name="slides">
-      <div class="slide slide-2"></div>
-      <input id="slide-dot-3" type="radio" name="slides">
-      <div class="slide slide-3"></div>
+        <div class="menu">
+            <label for="slide-dot-1"></label>
+            <label for="slide-dot-2"></label>
+            <label for="slide-dot-3"></label>
+        </div>
+        <input id="slide-dot-1" type="radio" name="slides" checked>
+        <div class="slide slide-1"></div>
+        <input id="slide-dot-2" type="radio" name="slides">
+        <div class="slide slide-2"></div>
+        <input id="slide-dot-3" type="radio" name="slides">
+        <div class="slide slide-3"></div>
     </div>
 
-<div>
-    <div class="banner">
-        <div class="column"> <br> <p class="big-text"><i class="fa-solid fa-credit-card"></i> Aceptamos pagos<br>Webpay!</p></div>
-        <div class="column"> <br> <p class="big-text"><i class="fa-solid fa-cart-shopping" style="color:black;"></i> Retiro en tienda!</p></div>
-        <div class="column"> <br> <p class="big-text"><i class="fa-regular fa-circle-check"></i> Garantía en toda<br>Comppra!</p></div>
-</div>
+    <div>
+        <div class="banner">
+            <div class="column"> <br>
+                <p class="big-text"><i class="fa-solid fa-credit-card"></i> Aceptamos pagos<br>Webpay!</p>
+            </div>
+            <div class="column"> <br>
+                <p class="big-text"><i class="fa-solid fa-cart-shopping" style="color:black;"></i> Retiro en tienda!</p>
+            </div>
+            <div class="column"> <br>
+                <p class="big-text"><i class="fa-regular fa-circle-check"></i> Garantía en toda<br>Comppra!</p>
+            </div>
+        </div>
 
 
 
-<br>
-
-<section class="product"> 
-    <h2 class="product-category">Más vendidos</h2>
-    <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-    <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-    <div class="product-container">
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/p1.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Esi </h4>
-                <h8 class="product-brand">Monitor de Estudio Esi </h8><br>
-                <span class="price">$150.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/p10.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Pedal</h4>
-                <h8 class="product-brand">Blackstar dual</h8><br>
-                <span class="price">$200.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">MaxStone</h8><br>
-                <span class="price">$1.020.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Greg Bennet</h8><br>
-                <span class="price">$2.050.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/p7.webp' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Microfono</h4>
-                <h8 class="product-brand">Nevo</h8><br>
-                <span class="price">$400.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Bajo Electrico</h8><br>
-                <span class="price">$1.200.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Bajo Electrico</h8><br>
-                <span class="price">$700.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Bajo Electrico</h8><br>
-                <span class="price">$900.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Bajo Electrico</h8><br>
-                <span class="price">$250.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <span class="discount-tag"></span>
-                <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
-                <button class="card-btn">Comprar</button>
-            </div>
-            <div class="product-info">
-                <h4 class="product-brand">Bajo Electrico</h4>
-                <h8 class="product-brand">Bajo Electrico</h8><br>
-                <span class="price">$800.000</span><span class="actual-price"></span>
-            </div>
-        </div>
-    </div>
-</section>
-</section>
-
-
-
-
-<section class="hero">
-    <div class="hero-inner">
-
-        <span id="displayText"><h1>¿Quienes somos?</h1><br><h3> ¡Descubre la tienda musical que te inspirará a alcanzar nuevas notas y melodías!</h3><br><h3>En nuestra tienda, encontrarás un amplio catálogo de instrumentos musicales de alta calidad</h3><br><h3>desde guitarras y pianos hasta baterías y violines. </h3></span>
         <br>
-        <button id="myButton" class="myButton" onclick="replaceButton()">Encuentranos</button>
-      
 
-        <div id="replacementDiv" class="hidden">
-            <h1>Tu melodía empieza aquí.</h1>
-            <div class="container">
-                <div id="map"></div>
-                <script src="{% static 'core/JS/script.js' %}"></script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBaHHft6gPwWJkYFs1HdDFNqHFGuR6rE&callback=iniciarMap"></script>
-                <br>
-                <div class="button-container">
-                <button class="hideButton" onclick="hideDiv()">Esconder Mapa</button>
+        <section class="product"> 
+            <h2 class="product-category">Ofertas</h2>
+            <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+            <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+            <div class="product-container">
+                {% for p in oferta %}
+                <div class="product-card">
+                    {% if p.imagenUno %}
+                    <div class="product-image">
+                        <span class="discount-tag">999999999</span>    
+                        <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+                        {% endif %}
+                        <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
+                    </div>
+                    <div class="product-info">
+                        <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+                        <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price">999999999</span>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
+        </section>
+
+
+
+
+
+        <section class="hero">
+            <div class="hero-inner">
+
+                <span id="displayText">
+                    <h1>¿Quienes somos?</h1><br>
+                    <h3> ¡Descubre la tienda musical que te inspirará a alcanzar nuevas notas y melodías!</h3><br>
+                    <h3>En nuestra tienda, encontrarás un amplio catálogo de instrumentos musicales de alta calidad</h3>
+                    <br>
+                    <h3>desde guitarras y pianos hasta baterías y violines. </h3>
+                </span>
+                <br>
+                <button id="myButton" class="myButton" onclick="replaceButton()">Encuentranos</button>
+
+
+                <div id="replacementDiv" class="hidden">
+                    <h1>Tu melodía empieza aquí.</h1>
+                    <div class="container">
+                        <div id="map"></div>
+                        <script src="{% static 'core/JS/script.js' %}"></script>
+                        <script
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBaHHft6gPwWJkYFs1HdDFNqHFGuR6rE&callback=iniciarMap"></script>
+                        <br>
+                        <div class="button-container">
+                            <button class="hideButton" onclick="hideDiv()">Esconder Mapa</button>
+                        </div>
+                    </div>
 
 
 
 
 
 
+
+                </div>
+        </section>
 
     </div>
-</section>
-        
-        </div>
-        <div><br>
+    <div><br>
 
-            <section class="product"> 
-                <h2 class="product-category">Nuestros Mejores Bajos</h2>
-                <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-                <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-                <div class="product-container">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo01.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico </h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$150.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo02.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$200.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo3.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$120.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo04.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$250.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$400.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo05.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$1.200.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo07.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$700.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo09.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$900.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/bajo10.webp' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$250.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="discount-tag"></span>
-                            <img src="{% static 'core/IMG/8.jpg' %}" class="product-thumb" alt="">
-                            <button class="card-btn">Comprar</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-brand">Bajo Electrico</h4>
-                            <h8 class="product-brand">Bajo Electrico</h8><br>
-                            <span class="price">$800.000</span><span class="actual-price"></span>
-                        </div>
-                    </div>
-                </div>
-            </section></div>
+        <section class="product">
+            <div><br>
 
-<!--Java script -->
-<script src="{% static 'core/JS/script.js' %}"></script>
+                <section class="product">
+                    <h2 class="product-category">Nuestros Mejores Bajos</h2>
+                    <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+                    <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
+                    <div class="product-container">
+                        {% for p in bajos %}
+                        <div class="product-card">
+                            {% if p.imagenUno %}
+                            <div class="product-image">
+                                <span class="discount-tag"></span>
+                                <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
+                                {% endif %}
+                                <a type='button' class='card-btn ' href="producto/{{p.id}}"
+                                    style="text-align: center;">Ir al producto.</a>
+                            </div>
+                            <div class="product-info">
+                                <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
+                                <span class="price">${{p.precioProducto | intcomma}}</span><span
+                                    class="actual-price"></span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
 
- <!--Bootstrap -->
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-     crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-     crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-     crossorigin="anonymous"></script>
+    <!--Java script -->
+    <script src="{% static 'core/JS/script.js' %}"></script>
+
+    <!--Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 <footer>
     <p>&copy; 2023 MusicPro. Todos derechos reservados.</p>
     <p>&copy; MusicPro@gmail.com.</p>
-    <div class = "social-links">
+    <div class="social-links">
         <p>Comparte en: </p>
-        <a href = "#">
-          <i class = "fab fa-facebook-f"></i>
+        <a href="#">
+            <i class="fab fa-facebook-f"></i>
         </a>
-        <a href = "#">
-          <i class = "fab fa-twitter"></i>
+        <a href="#">
+            <i class="fab fa-twitter"></i>
         </a>
-        <a href = "#">
-          <i class = "fab fa-instagram"></i>
+        <a href="#">
+            <i class="fab fa-instagram"></i>
         </a>
-        <a href = "#">
-          <i class = "fab fa-whatsapp"></i>
+        <a href="#">
+            <i class="fab fa-whatsapp"></i>
         </a>
-        <a href = "#">
-          <i class = "fab fa-pinterest"></i>
+        <a href="#">
+            <i class="fab fa-pinterest"></i>
         </a>
-  </footer>
+</footer>
+
 </html>
-
-
-
-

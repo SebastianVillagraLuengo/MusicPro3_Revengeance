@@ -71,10 +71,19 @@ def vista_usuario(request):
 @permission_required('core.add_producto')
 def vista_admin(request):
     productos = Producto.objects.all()
+    instrumentos = Producto.objects.filter(tipoNombre='1')
+    equipos = Producto.objects.filter(tipoNombre='2')
+    accesorios = Producto.objects.filter(tipoNombre='3')
+    oferta = Producto.objects.filter(tipoNombre='4')
+    bajos = Producto.objects.filter(nombreProducto__icontains='Bajo')
     data = {
-        'productos': productos
+        'oferta': oferta,
+        'instrumentos': instrumentos,
+        'equipos': equipos,
+        'accesorios': accesorios,
+        'bajos': bajos
     }
-    return render(request, 'core/vista_admin.html', data)
+    return render(request, 'core/vista_admin.html',data)
 
 
 @permission_required('core.add_producto')
@@ -299,3 +308,11 @@ def guardar_cantidades(request):
         return HttpResponse(status=200)
     else:
         return HttpResponse(status=400)
+
+def compraExitosa(request):
+    ItemCarrito.objects.all().delete()
+
+    messages.success(request, 'Su compra se ha realizado correctamente')
+    return(redirect('vista_usuario'))
+
+
