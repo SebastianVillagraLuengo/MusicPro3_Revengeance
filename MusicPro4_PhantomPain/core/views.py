@@ -26,6 +26,8 @@ def home(request):
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
+def modperfil(request):
+    return render(request, 'core/modperfil.html')
 
 def producto(request):
     return render(request, 'core/producto.html')

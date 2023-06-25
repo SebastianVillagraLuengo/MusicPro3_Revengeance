@@ -26,7 +26,7 @@
     <a href="{% url 'vista_usuario' %}" class="active"><i class="fa fa-home"></i></i> Inicio</a>
 
     {% if user.is_authenticated %}
-    <a href="#">Bienvenido: "{{ user.first_name }} {{user.last_name}}"</a>
+    <a href="{% url 'modperfil' %}">Bienvenido: "{{ user.first_name }} {{user.last_name}}"</a>
     {% endif%}
 
     <div class="topnav-right">
