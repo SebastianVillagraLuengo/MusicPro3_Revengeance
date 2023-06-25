@@ -27,6 +27,40 @@
       <i class="fa fa-bars"></i>
   </div>
 
+  </a>
+</div>   
+<!-- NAVBAR -->
+  <div class="container-fluid container-form">
+      <div class="row">
+        <div class="col-md-2 hidden-sm"></div>
+        <div class="col-md-8 col-sm-12">
+          <div class="container">
 
+            <form action="{% url 'funcion_login' %}" class="form" id="form" method="POST">
+
+              <p class="form-titulo">Recupera tu contraseña </p>
+              <div class="form-input nombre">
+                <input type="text" id="nombre" name="nombre">
+                <label for="nombre">Correo electrónico</label>
+                <p class="mensajeError"></p>
+              </div>
+
+              <div>
+                <q>Ingresa tu correo electronico y te enviaremos un link para que cambies tu contraseña</q>
+                <br>
+                <br>
+                <q>¿No tienes una cuenta?</q>
+                <a href="{% url 'registro' %}">¡Registrate Aqui!</a>
+              </div>
+              <div class="form-boton" >
+                 <input type="submit" value="Enviar">
+              </div>
+              <p class="mensajeCorrecto"></p>
+            </form>
+        </div>
+        <div class="col-md-2 hidden-sm"></div>
+      </div>
+    <script src=""></script>
+  </div>
 </body>
 </html>
