@@ -65,63 +65,46 @@
             }
             .card {
               background: white;
-              padding: 60px;
+              padding: 30px;
               border-radius: 4px;
               box-shadow: 0 2px 3px #C8D0D8;
               display: inline-block;
-              margin: 0 auto;
+              margin: 20px;
             }
             ul {
-    list-style-type: none;
-  }
+              list-style-type: none;
+              text-align: left; /* Agregado */
+            }
 
-  li {
-    position: relative;
-    padding-left: 20px;
-  }
+            li {
+              position: relative;
+            }
 
-  .elemento {
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-  }
+            .elemento {
+              font-weight: bold;
+              display: block;
+              margin-bottom: 10px;
+              text-align: center; /* Agregado */
+            }
 
-  .numero {
-    position: absolute;
-    right: 0;
-  }
+            .numero {
+              display: block;
+              margin-bottom: 10px;
+              text-align: center; /* Agregado */
+            }
           </style>
           <body>
 
   <!-- FRONTEND AQUÍ WAJJAJAJAJAJ -->
 <br>
             <div class="card">
-            <div style="border-radius:200px; height:600px; width:200px; background: #F8FAF5; margin:0 auto;">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
               <i2 class="checkmark">✓</i2>
             </div>
               <h2>Éxito</h2> 
-              <h3>La compra se realizó con exito;<br/></h3>
-                <p>A continuación le enviaremos la información de su boleta</p>
+              <h3>La compra se realizó con éxito;<br/></h3>
+                <p>La compra fue realizada con fecha: 30-06-2023</p>
                  <br>
-                 <ul>
-                  <li>
-                    <span class="elemento">Compra exitosa</span>
-                    <span class="numero"> </span>
-
-                    <span class="elemento">Fecha de compra</span>
-                    <span class="numero"> innerHTML = getCurrentDateAndTime(); </span>
-
-                    <span class="elemento">Estatus de compra</span>
-                    <span class="numero">Exitoso</span>
-                  </li>
-                </ul>
             </div>
           </body>
-
-
-
-
-
-
-
-
+</html>
