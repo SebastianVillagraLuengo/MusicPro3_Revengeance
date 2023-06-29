@@ -67,12 +67,23 @@
               margin: 0 auto;
             }
             ul {
-    list-style-type: disc;
+    list-style-type: none;
   }
 
   li {
-    margin-left: -30px;
-    padding-left: 5px;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .elemento {
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .numero {
+    position: absolute;
+    right: 0;
   }
           </style>
           <body>
@@ -92,14 +103,23 @@
               <i2 class="checkmark">✓</i2>
             </div>
               <h2>Éxito</h2> 
-              <p>La compra se realizó con exito;<br/>
-                 El respeto se lo gana el que me lo mama!</p>
+              <h3>La compra se realizó con exito;<br/></h3>
+                <p>A continuación le enviaremos la información de su boleta</p>
                  <br>
                  <ul>
-                    <li>Monto: 69$</li>
-                    <li>Desde: Tú para mí</li>
-                    <li>El respeto lo gana...</li>
-                  </ul>
+                  <li>
+                    <span class="elemento">Elemento</span>
+                    <span class="numero">1</span>
+                  </li>
+                  <li>
+                    <span class="elemento">Elemento</span>
+                    <span class="numero">2</span>
+                  </li>
+                  <li>
+                    <span class="elemento">Elemento</span>
+                    <span class="numero">3</span>
+                  </li>
+                </ul>
             </div>
           </body>
 
