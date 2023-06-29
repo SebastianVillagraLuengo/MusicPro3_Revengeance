@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import F, Sum
 from decimal import Decimal
 from paypalrestsdk import Payment
+from django.http import HttpResponse
 
 
 def home(request):
@@ -381,7 +382,7 @@ def completar_pago(request):
                 # Agrega aquí cualquier otro dato que desees mostrar en el template
             }
             ItemCarrito.objects.all().delete()
-            return render(request, 'completar_pago.html', contexto)
+            return render(request, 'core/completar_pago.html', contexto)
         else:
             # Error al ejecutar el pago
             return HttpResponse("Error al completar el pago.")

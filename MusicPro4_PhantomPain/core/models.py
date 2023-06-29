@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date
 from django.contrib.auth.models import User
 from django.http import JsonResponse
-
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -98,3 +98,22 @@ def actualizar_cantidad(request):
         return JsonResponse({'status': 'success'})
     else:
         return JsonResponse({'status': 'error'})
+
+
+class CustomUser(AbstractUser):
+    payment_transaction = models.CharField(max_length=255, null=True, blank=True)
+    # Otros campos de tu modelo
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        related_name='custom_users',
+        related_query_name='custom_user'
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        related_name='custom_users',
+        related_query_name='custom_user'
+    )

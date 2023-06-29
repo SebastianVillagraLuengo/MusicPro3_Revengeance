@@ -7,7 +7,7 @@ from .views import home,producto,html_registro,html_login,tienda,vista_usuario,v
 
 urlpatterns = [
     path('cancelar_pago', cancelar_pago, name='cancelar_pago'),
-    path('completar_pago', completar_pago, name='completar_pago'),
+    path('completar_pago/', completar_pago, name='completar_pago'),
     path('', home, name='index'),
     path('registro', html_registro, name='registro'),
     path('login', html_login, name='login'),
