@@ -375,7 +375,6 @@ def iniciar_pago(request):
     return HttpResponse("Error al iniciar el pago.")
 
 
-@login_required
 def completar_pago(request):
     payment_id = request.GET.get('paymentId')
     token = request.GET.get('token')
