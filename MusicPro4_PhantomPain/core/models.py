@@ -2,8 +2,8 @@ from django.db import models
 from datetime import date
 from django.contrib.auth.models import User
 from django.http import JsonResponse
-
-
+from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 #Tabla de roles
@@ -13,19 +13,15 @@ class Rol(models.Model):
         return self.nombreRol
 
 #Tabla de usuario
-class Usuario(models.Model):
-    #llave primaria
-    nombreUsuario = models.CharField(max_length=25,verbose_name='El nombre que el usuario usa para ingresar a su cuenta')
-    apellidos = models.CharField(max_length=25,verbose_name='El nombre que se mostrara algún día en la sección de comentarios')
-    correoUsuario = models.CharField(max_length=25,verbose_name='El correo asociado a la cuenta')
-    celular = models.IntegerField(verbose_name='El correo asociado a la cuenta')
-    clave = models.CharField(max_length=25,verbose_name='El correo asociado a la cuenta')
 
-    #llave foranea
-    rol=models.ForeignKey(Rol,on_delete=models.PROTECT,verbose_name='La llave de rol-usuario')
 
-    def __str__(self) -> str:
-        return self.nombreUsuario
+class Usuario(AbstractUser):
+    groups = models.ManyToManyField(Group, related_name='grupos_usuarios')
+    user_permissions = models.ManyToManyField(Permission, related_name='usuarios_permisos')
+    payment_transaction = models.CharField(max_length=100, blank=True, null=True, default='valor-manual')
+    password = models.CharField(max_length=128, default='default-password')
+    username= models.CharField(max_length=50, default='default-user')
+
 
 class TipoProducto(models.Model):
     nombreTipo= models.CharField(max_length=25,verbose_name='Nombre del tipo de producto')

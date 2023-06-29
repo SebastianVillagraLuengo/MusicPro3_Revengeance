@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto,TipoProducto,Carrito,ItemCarrito
+from .models import Producto,TipoProducto,Carrito,ItemCarrito, Usuario
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import F, Sum
 from decimal import Decimal
 from paypalrestsdk import Payment
+from django.http import HttpResponse
 
 
 def home(request):
@@ -364,16 +365,17 @@ def iniciar_pago(request):
 
 @login_required
 def completar_pago(request):
-    user = request.user
-
-    # Obtener el ID de la transacción de pago del usuario actual
-    payment_id = user.payment_transaction
-
+    payment_id = request.GET.get('paymentId')
+    token = request.GET.get('token')
+    payer_id = request.GET.get('PayerID')
+    
     if payment_id:
         payment = Payment.find(payment_id)
 
-        if payment.execute({"payer_id": request.GET.get('PayerID')}):
-            # Pago exitoso, mostrar datos del usuario y detalles de la transacción
+        if payment.execute({"payer_id": payer_id}):
+            user = request.user
+            usuario = Usuario.objects.create(username=user, payment_transaction='yeayea')
+
             contexto = {
                 'usuario': user,
                 'total_pagado': payment.transactions[0].amount.total,
@@ -381,9 +383,8 @@ def completar_pago(request):
                 # Agrega aquí cualquier otro dato que desees mostrar en el template
             }
             ItemCarrito.objects.all().delete()
-            return render(request, 'completar_pago.html', contexto)
+            return render(request, 'core/completar_pago.html', contexto)
         else:
-            # Error al ejecutar el pago
-            return HttpResponse("Error al completar el pago.")
+            return render(request, 'core/cancelar_pago.html')
     else:
-        return HttpResponse("No se encontró la transacción de pago.")
+        return render(request, 'core/cancelar_pago.html')
