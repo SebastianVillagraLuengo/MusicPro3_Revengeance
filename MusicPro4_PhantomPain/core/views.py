@@ -27,11 +27,10 @@ def home(request):
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
+
 def cancelar_pago(request):
     return render(request, 'core/cancelar_pago.html')
 
-def completar_pago(request):
-    return render(request, 'core/completar_pago.html')
 
 def modperfil(request):
     return render(request, 'core/modperfil.html')
@@ -324,13 +323,6 @@ def guardar_cantidades(request):
     else:
         return HttpResponse(status=400)
 
-def compraExitosa(request):
-    ItemCarrito.objects.all().delete()
-
-    messages.success(request, 'Su compra se ha realizado correctamente')
-    return(redirect('vista_usuario'))
-
-
 @login_required
 def iniciar_pago(request):
     user = request.user
@@ -341,8 +333,8 @@ def iniciar_pago(request):
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:8000/tu_aplicacion/completar_pago/",
-            "cancel_url": "http://localhost:8000/tu_aplicacion/cancelar_pago/"
+            "return_url": "http://localhost:8000/completar_pago/",
+            "cancel_url": "http://localhost:8000/cancelar_pago/"
         },
         "transactions": [{
             "amount": {
@@ -388,6 +380,7 @@ def completar_pago(request):
                 'moneda': payment.transactions[0].amount.currency,
                 # Agrega aquí cualquier otro dato que desees mostrar en el template
             }
+            ItemCarrito.objects.all().delete()
             return render(request, 'completar_pago.html', contexto)
         else:
             # Error al ejecutar el pago

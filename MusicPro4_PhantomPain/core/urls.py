@@ -1,16 +1,13 @@
 from django.contrib import admin
 from django.urls import path
 from .views import home,producto,html_registro,html_login,tienda,vista_usuario,vista_admin,tienda_admin,agregar_productos,carrito, formProducto,modperfil,olvidar,resetear,completar_pago,cancelar_pago \
-    ,  eliminacion_prod,modificar_productos,funcion_login,registro_view,mostrar_producto,agregar_al_carrito,actualizar_cantidad, carritoVacio, guardar_cantidades, compraExitosa
+    ,  eliminacion_prod,modificar_productos,funcion_login,registro_view,mostrar_producto,agregar_al_carrito,actualizar_cantidad, carritoVacio, guardar_cantidades,iniciar_pago 
+
 
 
 urlpatterns = [
-
-
     path('cancelar_pago', cancelar_pago, name='cancelar_pago'),
     path('completar_pago', completar_pago, name='completar_pago'),
-    
-
     path('', home, name='index'),
     path('registro', html_registro, name='registro'),
     path('login', html_login, name='login'),
@@ -19,7 +16,6 @@ urlpatterns = [
     path('modperfil', modperfil, name='modperfil'),
     path('resetear', resetear, name='resetear'),
     path('olvidar', olvidar, name='olvidar'),
-
     path('vista_admin', vista_admin, name='vista_admin'),
     path('tienda_admin', tienda_admin, name='tienda_admin'),
     path('agregar_productos', agregar_productos, name='agregar_productos'),
@@ -34,5 +30,6 @@ urlpatterns = [
     path('actualizar-cantidad/', actualizar_cantidad, name='actualizar_cantidad'),
     path('carritoVacio',carritoVacio,name='carritoVacio'),
     path('guardar_cantidades/', guardar_cantidades, name='guardar_cantidades'),
-    path('compraExitosa',compraExitosa,name='compraExitosa'),
+    path('iniciar-pago/', iniciar_pago, name='iniciar_pago'),
+    # path('compraExitosa',compraExitosa,name='compraExitosa'),
 ]
