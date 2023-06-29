@@ -10,6 +10,8 @@ from django.db.models import F, Sum
 from decimal import Decimal
 from paypalrestsdk import Payment
 from django.http import HttpResponse
+from forex_python.converter import CurrencyRates
+from decimal import Decimal
 
 
 def home(request):
@@ -274,6 +276,7 @@ def agregar_al_carrito(request, id):
 
     if 'carrito_id' in request.session:
         carrito = get_object_or_404(Carrito, id=request.session['carrito_id'])
+        carrito.estado = 'abierto'  # Cambia el estado del carrito a 'abierto'
     else:
         carrito = Carrito.objects.create(usuario=request.user)
         request.session['carrito_id'] = carrito.id
@@ -290,7 +293,6 @@ def agregar_al_carrito(request, id):
     else:
         total = 0
     carrito.total = total
-    carrito.estado = 'cerrado'
     carrito.save()
 
     return redirect('carrito')
@@ -308,7 +310,6 @@ def actualizar_cantidad(request):
 
 @login_required
 def carritoVacio(request):
-
     return render(request, 'core/carritoVacio.html')
 
 
@@ -328,6 +329,18 @@ def guardar_cantidades(request):
 def iniciar_pago(request):
     user = request.user
 
+    # Obtener el carrito actual del usuario
+    carrito = Carrito.objects.get(usuario=user, estado='abierto')
+
+    # Obtener el precio total del carrito en CLP
+    total_carrito_clp = carrito.total
+    print(total_carrito_clp)
+
+    # Calcular el precio total del carrito en USD utilizando la tasa de cambio
+    exchange_rate_clp_usd = 0.0012
+    total_carrito_usd = round(float(total_carrito_clp) * exchange_rate_clp_usd, 2)
+    print(total_carrito_usd)
+
     payment = Payment({
         "intent": "sale",
         "payer": {
@@ -339,7 +352,7 @@ def iniciar_pago(request):
         },
         "transactions": [{
             "amount": {
-                "total": "10.00",
+                "total": str(total_carrito_usd),  # Pasar el precio total del carrito en USD
                 "currency": "USD"
             },
             "description": "Compra en la tienda de instrumentos musicales"
@@ -362,19 +375,19 @@ def iniciar_pago(request):
     return HttpResponse("Error al iniciar el pago.")
 
 
-
 @login_required
 def completar_pago(request):
     payment_id = request.GET.get('paymentId')
     token = request.GET.get('token')
     payer_id = request.GET.get('PayerID')
-    
     if payment_id:
         payment = Payment.find(payment_id)
 
         if payment.execute({"payer_id": payer_id}):
             user = request.user
-            usuario = Usuario.objects.create(username=user, payment_transaction='yeayea')
+            carrito = Carrito.objects.get(usuario=user, estado='abierto')
+            carrito.estado = 'cerrado'
+            carrito.save()
 
             contexto = {
                 'usuario': user,
