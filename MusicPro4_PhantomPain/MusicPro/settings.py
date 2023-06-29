@@ -29,6 +29,10 @@ ALLOWED_HOSTS = []
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 LOGIN_URL = 'login'
 
+PAYPAL_CLIENT_ID = 'AaKis77LMwkN-_BNxsSq8edvP2810CjdhwI_roqygkOA456UGozcTXyxYPAENhUo430SKSIpzttY67J0'
+PAYPAL_CLIENT_SECRET = 'ELruyw49FI3s0wy0X_vVjwDgh5x2l4MHkemQzj7Pld_1MeJFeY1_tH3mYXYVZvKrTwc2dmZ4gLRs6BY-'
+PAYPAL_MODE = 'sandbox'  # Puedes cambiarlo a 'live' en producción / despues se puede cambiar a live para probar con plata de verdad
+
 # Application definition
 
 INSTALLED_APPS = [

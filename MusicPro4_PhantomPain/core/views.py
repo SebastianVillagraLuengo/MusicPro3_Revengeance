@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import F, Sum
 from decimal import Decimal
+from paypalrestsdk import Payment
 
 
 def home(request):
@@ -324,3 +325,66 @@ def compraExitosa(request):
     return(redirect('vista_usuario'))
 
 
+@login_required
+def iniciar_pago(request):
+    user = request.user
+
+    payment = Payment({
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://localhost:8000/tu_aplicacion/completar_pago/",
+            "cancel_url": "http://localhost:8000/tu_aplicacion/cancelar_pago/"
+        },
+        "transactions": [{
+            "amount": {
+                "total": "10.00",
+                "currency": "USD"
+            },
+            "description": "Compra en la tienda de instrumentos musicales"
+        }]
+    })
+
+    if payment.create():
+        for link in payment.links:
+            if link.method == "REDIRECT":
+                redirect_url = str(link.href)
+
+                # Asociar la transacción de pago con el usuario actual
+                user.payment_transaction = payment.id
+                user.save()
+
+                return redirect(redirect_url)
+    else:
+        return HttpResponse("Error al iniciar el pago.")
+
+    return HttpResponse("Error al iniciar el pago.")
+
+
+
+@login_required
+def completar_pago(request):
+    user = request.user
+
+    # Obtener el ID de la transacción de pago del usuario actual
+    payment_id = user.payment_transaction
+
+    if payment_id:
+        payment = Payment.find(payment_id)
+
+        if payment.execute({"payer_id": request.GET.get('PayerID')}):
+            # Pago exitoso, mostrar datos del usuario y detalles de la transacción
+            contexto = {
+                'usuario': user,
+                'total_pagado': payment.transactions[0].amount.total,
+                'moneda': payment.transactions[0].amount.currency,
+                # Agrega aquí cualquier otro dato que desees mostrar en el template
+            }
+            return render(request, 'completar_pago.html', contexto)
+        else:
+            # Error al ejecutar el pago
+            return HttpResponse("Error al completar el pago.")
+    else:
+        return HttpResponse("No se encontró la transacción de pago.")
