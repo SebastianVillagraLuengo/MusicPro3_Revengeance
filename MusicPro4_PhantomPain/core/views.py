@@ -27,6 +27,12 @@ def home(request):
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
+def cancelar_pago(request):
+    return render(request, 'core/cancelar_pago.html')
+
+def completar_pago(request):
+    return render(request, 'core/completar_pago.html')
+
 def modperfil(request):
     return render(request, 'core/modperfil.html')
 
