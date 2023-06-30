@@ -131,25 +131,29 @@ def agregar_productos(request):
 #PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
 @login_required
 def carrito(request):
-    if 'carrito_id' in request.session:
-        carrito_actual = Carrito.objects.get(id=request.session['carrito_id'])
+    carrito_id = request.session.get('carrito_id')
+    if carrito_id:
+        try:
+            carrito_actual = Carrito.objects.get(id=carrito_id)
+        except Carrito.DoesNotExist:
+            carrito_actual = None
     else:
         carrito_actual = Carrito.objects.create(usuario=request.user)
         request.session['carrito_id'] = carrito_actual.id
-    
+
     items = ItemCarrito.objects.filter(carrito=carrito_actual)
-    
-    if not items.exists():
+
+    if not items:
         return redirect('carritoVacio')
-    
-    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
-    if total is not None:
-        total = Decimal(total).quantize(Decimal('.00'))
-    else:
-        total = 0
-    
-    context = {'items': items, 'total': total}
-    
+
+    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total'] or 0
+    total = Decimal(total).quantize(Decimal('.00'))
+
+    context = {
+        'items': items,
+        'total': total
+    }
+
     return render(request, 'core/carrito.html', context)
     
 @permission_required('core.add_producto')
@@ -273,26 +277,26 @@ def mostrar_producto(request, id):
 @login_required
 def agregar_al_carrito(request, id):
     producto = get_object_or_404(Producto, id=id)
+    usuario = request.user
 
     if 'carrito_id' in request.session:
-        carrito = get_object_or_404(Carrito, id=request.session['carrito_id'])
-        carrito.estado = 'abierto'  # Cambia el estado del carrito a 'abierto'
+        carrito_id = request.session['carrito_id']
+        carrito = get_object_or_404(Carrito, id=carrito_id, usuario=usuario, estado='abierto')
     else:
-        carrito = Carrito.objects.create(usuario=request.user)
-        request.session['carrito_id'] = carrito.id
+        carrito = Carrito.objects.filter(usuario=usuario, estado='abierto').first()
+
+        if carrito is None:
+            carrito = Carrito.objects.create(usuario=usuario)
+        else:
+            request.session['carrito_id'] = carrito.id
 
     cantidad = 1
     item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
     item_carrito.save()
 
     # Recalcular el total del carrito
-    items = ItemCarrito.objects.filter(carrito=carrito)
-    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
-    if total is not None:
-        total = Decimal(total).quantize(Decimal('.00'))
-    else:
-        total = 0
-    carrito.total = total
+    total = ItemCarrito.objects.filter(carrito=carrito).aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
+    carrito.total = Decimal(total or 0).quantize(Decimal('.00'))
     carrito.save()
 
     return redirect('carrito')
@@ -329,50 +333,54 @@ def guardar_cantidades(request):
 def iniciar_pago(request):
     user = request.user
 
-    # Obtener el carrito actual del usuario
-    carrito = Carrito.objects.get(usuario=user, estado='abierto')
+    try:
+        # Obtener el carrito actual del usuario
+        carrito = Carrito.objects.get(usuario=user, estado='abierto')
 
-    # Obtener el precio total del carrito en CLP
-    total_carrito_clp = carrito.total
-    print(total_carrito_clp)
+        # Obtener el precio total del carrito en CLP
+        total_carrito_clp = carrito.total
 
-    # Calcular el precio total del carrito en USD utilizando la tasa de cambio
-    exchange_rate_clp_usd = 0.0012
-    total_carrito_usd = round(float(total_carrito_clp) * exchange_rate_clp_usd, 2)
-    print(total_carrito_usd)
+        # Calcular el precio total del carrito en USD utilizando la tasa de cambio
+        exchange_rate_clp_usd = 0.0012
+        total_carrito_usd = round(float(total_carrito_clp) * exchange_rate_clp_usd, 2)
 
-    payment = Payment({
-        "intent": "sale",
-        "payer": {
-            "payment_method": "paypal"
-        },
-        "redirect_urls": {
-            "return_url": "http://localhost:8000/completar_pago/",
-            "cancel_url": "http://localhost:8000/cancelar_pago/"
-        },
-        "transactions": [{
-            "amount": {
-                "total": str(total_carrito_usd),  # Pasar el precio total del carrito en USD
-                "currency": "USD"
+        payment = Payment({
+            "intent": "sale",
+            "payer": {
+                "payment_method": "paypal"
             },
-            "description": "Compra en la tienda de instrumentos musicales"
-        }]
-    })
+            "redirect_urls": {
+                "return_url": "http://localhost:8000/completar_pago/",
+                "cancel_url": "http://localhost:8000/cancelar_pago/"
+            },
+            "transactions": [{
+                "amount": {
+                    "total": str(total_carrito_usd),  # Pasar el precio total del carrito en USD
+                    "currency": "USD"
+                },
+                "description": "Compra en la tienda de instrumentos musicales"
+            }]
+        })
 
-    if payment.create():
-        for link in payment.links:
-            if link.method == "REDIRECT":
-                redirect_url = str(link.href)
+        if payment.create():
+            # Asociar el ID del pago con el carrito actual
+            carrito.payment_transaction = payment.id
+            carrito.save()
 
-                # Asociar la transacción de pago con el usuario actual
-                user.payment_transaction = payment.id
-                user.save()
+            for link in payment.links:
+                if link.method == "REDIRECT":
+                    redirect_url = str(link.href)
 
-                return redirect(redirect_url)
-    else:
-        return HttpResponse("Error al iniciar el pago.")
+                    return redirect(redirect_url)
+        else:
+            error_message = "Error al iniciar el pago: " + payment.error
+            return render(request, "core/cancelar_pago.html", {"error_message": error_message})
+    except Carrito.DoesNotExist:
+        error_message = "Carrito no encontrado."
+        return render(request, "core/cancelar_pago.html", {"error_message": error_message})
 
-    return HttpResponse("Error al iniciar el pago.")
+    error_message = "Error al iniciar el pago."
+    return render(request, "core/cancelar_pago.html", {"error_message": error_message})
 
 
 def completar_pago(request):
