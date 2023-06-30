@@ -12,7 +12,7 @@ from paypalrestsdk import Payment
 from django.http import HttpResponse
 from forex_python.converter import CurrencyRates
 from decimal import Decimal
-
+from datetime import datetime
 
 def home(request):
     productos = Producto.objects.all()
@@ -379,19 +379,25 @@ def completar_pago(request):
     payment_id = request.GET.get('paymentId')
     token = request.GET.get('token')
     payer_id = request.GET.get('PayerID')
+    current_date = datetime.now()
+
     if payment_id:
         payment = Payment.find(payment_id)
 
         if payment.execute({"payer_id": payer_id}):
             user = request.user
-            carrito = Carrito.objects.get(usuario=user, estado='abierto')
+            carrito = Carrito.objects.get(usuario=user.id, estado='abierto')
             carrito.estado = 'cerrado'
             carrito.save()
-
+            total = carrito.total
+            idCompra = carrito.id
             contexto = {
                 'usuario': user,
                 'total_pagado': payment.transactions[0].amount.total,
                 'moneda': payment.transactions[0].amount.currency,
+                'hora': current_date,
+                'total': total,
+                'idCompra':idCompra
                 # Agrega aquí cualquier otro dato que desees mostrar en el template
             }
             ItemCarrito.objects.all().delete()
@@ -400,3 +406,11 @@ def completar_pago(request):
             return render(request, 'core/cancelar_pago.html')
     else:
         return render(request, 'core/cancelar_pago.html')
+
+@csrf_exempt
+def eliminacion_prodCarrito(request, id):
+    productoCarrito = ItemCarrito.objects.get(id=id)
+    productoCarrito.delete()
+    messages.success(request, 'Producto eliminado con éxito')
+
+    return redirect('carrito')

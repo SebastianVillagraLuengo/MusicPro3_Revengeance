@@ -84,7 +84,7 @@
                                   <button class="btn-quantity btn-plus" data-id="{{ item.producto.id }}" data-quantity="{{ item.cantidad }}">+</button>
                               </td>
                                 <td class="text-right font-weight-semibold align-middle p-4">${{ item.subtotal | intcomma }}</td>
-                                <td class="text-center align-middle px-0"><a href="#"
+                                <td class="text-center align-middle px-0"><a href="carrito/eliminacion_prodCarrito/{{item.id}}"
                                         class="shop-tooltip close float-none text-danger" title=""
                                         data-original-title="Remove">×</a></td>
                             </tr>

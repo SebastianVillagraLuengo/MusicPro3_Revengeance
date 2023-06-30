@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-
+{% load humanize %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,7 +103,9 @@
             </div>
               <h2>Éxito</h2> 
               <h3>La compra se realizó con éxito;<br/></h3>
-                <p>La compra fue realizada con fecha: 30-06-2023</p>
+                <p>Fecha de compra: {{hora}}</p>
+                <p>Monto total: ${{total | intcomma}}</p>
+                <p>ID Orden: {{idCompra}}</p>
                  <br>
             </div>
           </body>
