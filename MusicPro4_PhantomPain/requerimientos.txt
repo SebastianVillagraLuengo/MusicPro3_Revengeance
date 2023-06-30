@@ -2,20 +2,3 @@ django
 pillow 
 paypalrestsdk
 forex-python
-
-paypal sandbox url : 'https://www.sandbox.paypal.com/signin'
-
-CUENTA DEL DUEÑO
-sb-2rimz26457723@business.example.com 
-2n)9/H#G
-
-CUENTA DEL CLIENTE
-sb-fzl1c26457462@personal.example.com
-CG=[51b,
-
-1) ir a este equipo apretar click derecho y propiedades
-2) ir a configuracion avanzada del sistema
-3) ir a variables de entorno
-4) añadir en variables del sistema las 2 de paypal 
-5) Nombre de la variable : 'PAYPAL_CLIENT_ID' y valor de la variable : 'AaKis77LMwkN-_BNxsSq8edvP2810CjdhwI_roqygkOA456UGozcTXyxYPAENhUo430SKSIpzttY67J0'
-6) Nombre de la variable : 'PAYPAL_CLIENT_SECRET' y valor de la variable : 'ELruyw49FI3s0wy0X_vVjwDgh5x2l4MHkemQzj7Pld_1MeJFeY1_tH3mYXYVZvKrTwc2dmZ4gLRs6BY-'
