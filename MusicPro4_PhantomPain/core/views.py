@@ -128,6 +128,33 @@ def agregar_productos(request):
 
     return render(request, 'core/formularioAgregarProductos.html', variables)
 
+@login_required
+def agregar_al_carrito(request, id):
+    producto = get_object_or_404(Producto, id=id)
+
+    if 'carrito_id' in request.session:
+        carrito = get_object_or_404(Carrito, id=request.session['carrito_id'])
+        carrito.estado = 'abierto'  # Cambia el estado del carrito a 'abierto'
+    else:
+        carrito = Carrito.objects.create(usuario=request.user)
+        request.session['carrito_id'] = carrito.id
+
+    cantidad = 1
+    item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
+    item_carrito.save()
+
+    # Recalcular el total del carrito
+    items = ItemCarrito.objects.filter(carrito=carrito)
+    total = items.aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
+    if total is not None:
+        total = Decimal(total).quantize(Decimal('.00'))
+    else:
+        total = 0
+    carrito.total = total
+    carrito.save()
+
+    return redirect('carrito')
+
 #PARA CUANDO EL FELIPE QL SE DIGNE A HACER LA WEA DE CARRITO @login_required
 @login_required
 def carrito(request):
@@ -274,32 +301,7 @@ def mostrar_producto(request, id):
     producto = get_object_or_404(Producto, pk=id)
     return render(request, 'core/producto.html', {'producto': producto})
 
-@login_required
-def agregar_al_carrito(request, id):
-    producto = get_object_or_404(Producto, id=id)
-    usuario = request.user
 
-    if 'carrito_id' in request.session:
-        carrito_id = request.session['carrito_id']
-        carrito = get_object_or_404(Carrito, id=carrito_id, usuario=usuario, estado='abierto')
-    else:
-        carrito = Carrito.objects.filter(usuario=usuario, estado='abierto').first()
-
-        if carrito is None:
-            carrito = Carrito.objects.create(usuario=usuario)
-        else:
-            request.session['carrito_id'] = carrito.id
-
-    cantidad = 1
-    item_carrito = ItemCarrito(carrito=carrito, producto=producto, cantidad=cantidad)
-    item_carrito.save()
-
-    # Recalcular el total del carrito
-    total = ItemCarrito.objects.filter(carrito=carrito).aggregate(total=Sum(F('producto__precioProducto') * F('cantidad')))['total']
-    carrito.total = Decimal(total or 0).quantize(Decimal('.00'))
-    carrito.save()
-
-    return redirect('carrito')
 
 def actualizar_cantidad(request):
     if request.method == 'POST' and request.is_ajax():
