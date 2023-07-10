@@ -30,6 +30,8 @@ def home(request):
     }
     return render(request, 'core/index.html', data)
 # Create your views here.
+def historial(request):
+    return render(request, 'core/historial.html')
 
 def cancelar_pago(request):
     return render(request, 'core/cancelar_pago.html')

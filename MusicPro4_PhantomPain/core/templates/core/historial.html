@@ -263,109 +263,7 @@ background-color: #555;
                   {% endfor %}
                   {%endif%}
 
-    <div class="slider-container">
-      <div class="menu">
-        <label for="slide-dot-1"></label>
-        <label for="slide-dot-2"></label>
-        <label for="slide-dot-3"></label>
-      </div>
-      <input id="slide-dot-1" type="radio" name="slides" checked>
-      <div class="slide slide-1"></div>
-      <input id="slide-dot-2" type="radio" name="slides">
-      <div class="slide slide-2"></div>
-      <input id="slide-dot-3" type="radio" name="slides">
-      <div class="slide slide-3"></div>
-    </div>
-
-<div>
-    <div class="banner">
-        <div class="column"> <br> <p class="big-text"><i class="fa-solid fa-credit-card"></i> Aceptamos pagos<br>Webpay!</p></div>
-        <div class="column"> <br> <p class="big-text"><i class="fa-solid fa-cart-shopping" style="color:black;"></i> Retiro en tienda!</p></div>
-        <div class="column"> <br> <p class="big-text"><i class="fa-regular fa-circle-check"></i> Garantía en toda<br>Compra!</p></div>
-</div>
-
-
-
-<br>
-
-<section class="product"> 
-    <h2 class="product-category">Ofertas</h2>
-    <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-    <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-    <div class="product-container">
-        {% for p in oferta %}
-        <div class="product-card">
-            {% if p.imagenUno %}
-            <div class="product-image">
-                <span class="discount-tag"></span>    
-                <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
-                {% endif %}
-                <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
-            </div>
-            <div class="product-info">
-                <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-                <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<section class="hero">
-    <div class="hero-inner">
-
-        <span id="displayText"><h1>¿Quienes somos?</h1><br><h3> ¡Descubre la tienda musical que te inspirará a alcanzar nuevas notas y melodías!</h3><br><h3>En nuestra tienda, encontrarás un amplio catálogo de instrumentos musicales de alta calidad</h3><br><h3>desde guitarras y pianos hasta baterías y violines. </h3></span>
-        <br>
-        <button id="myButton" class="myButton" onclick="replaceButton()">Encuéntranos</button>
-      
-
-        <div id="replacementDiv" class="hidden">
-            <h1>Tu melodía empieza aquí.</h1>
-            <div class="container">
-                <div id="map"></div>
-                <script src="{% static 'core/JS/script.js' %}"></script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBaHHft6gPwWJkYFs1HdDFNqHFGuR6rE&callback=iniciarMap"></script>
-                <br>
-                <div class="button-container">
-                <button class="hideButton" onclick="hideDiv()">Esconder Mapa</button>
-                </div>
-            </div>
-
-
-
-
-
-
-
-    </div>
-</section>
-
-</div>
-<div><br>
-
-    <section class="product"> 
-        <h2 class="product-category">Nuestros Mejores Bajos</h2>
-        <button class="pre-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-        <button class="nxt-btn"><i class="fa-solid fa-arrow-right fa-2xl"></i></button>
-        <div class="product-container">
-            {% for p in bajos %}
-            <div class="product-card">
-                {% if p.imagenUno %}
-                <div class="product-image">
-                    <span class="discount-tag"></span>    
-                    <img src="{{ p.imagenUno.url }}" class="product-thumb" alt="">
-                    {% endif %}
-                    <a type='button' class='card-btn 'href="producto/{{p.id}}" style="text-align: center;">Ir al producto.</a>
-                </div>
-                <div class="product-info">
-                    <h8 class="product-brand">{{ p.nombreProducto}} </h8><br>
-                    <span class="price">${{p.precioProducto | intcomma}}</span><span class="actual-price"></span>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section></div>
-
+    
 <!--Java script -->
 <script src="{% static 'core/JS/script.js' %}"></script>
 
@@ -380,6 +278,24 @@ background-color: #555;
      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
      crossorigin="anonymous"></script>
 </body>
+<section class="hero">
+    <div class="hero-inner">
+
+        <span id="displayText"><h1>Historial aquí wajajaja</h1></span>
+        <br>
+      
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+    </div>
+</section>
 <footer>
     <p>&copy; 2023 MusicPro. Todos derechos reservados.</p>
     <p>&copy; MusicPro@gmail.com.</p>

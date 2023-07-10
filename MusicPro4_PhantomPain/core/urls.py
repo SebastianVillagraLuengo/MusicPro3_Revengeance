@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.urls import path
-from .views import home,producto,html_registro,html_login,tienda,vista_usuario,vista_admin,tienda_admin,agregar_productos,carrito, formProducto,modperfil,olvidar,resetear,completar_pago,cancelar_pago \
+from .views import home,producto,html_registro,html_login,tienda,vista_usuario,vista_admin,tienda_admin,agregar_productos,carrito, formProducto,modperfil,olvidar,resetear,completar_pago,cancelar_pago,historial \
     ,  eliminacion_prod,modificar_productos,funcion_login,registro_view,mostrar_producto,agregar_al_carrito,actualizar_cantidad, carritoVacio, guardar_cantidades,iniciar_pago \
     ,  eliminacion_prodCarrito
 
 
 
 urlpatterns = [
+    path('historial', historial, name='historial'),
     path('cancelar_pago', cancelar_pago, name='cancelar_pago'),
     path('completar_pago/', completar_pago, name='completar_pago'),
     path('', home, name='index'),
